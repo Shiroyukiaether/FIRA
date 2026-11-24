@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajukan Publikasi · FIRA</title>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
+      <span>FIRA</span>
+    </a>
+
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="prosedur.html">Prosedur</a></li>
+        <li><a href="pinjam.html" aria-current="page">Pinjam Fasilitas</a></li>
+      </ul>
+    </nav>
+
+    <button type="button">Notifikasi</button>
+
+    <div>
+      <img src="assets/avatar.png" alt="" width="48" height="48">
+      <p>Iqbal Fahmi</p>
+      <p>NIM 255150200111024</p>
+    </div>
+  </header>
+
+  <main>
+    <h1>Ajukan Publikasi</h1>
+
+    <!-- Kategori -->
+    <nav aria-label="Kategori fasilitas">
+      <ul>
+        <li><a href="pinjam.html">Ruangan</a></li>
+        <li><a href="peralatan.html">Peralatan</a></li>
+        <li><a href="publikasi.html" aria-current="page">Publikasi</a></li>
+      </ul>
+    </nav>
+
+    <!-- Formulir -->
+    <form id="form-publikasi" novalidate>
+      <fieldset>
+        <legend>Detail penayangan</legend>
+        <p>Pilih lokasi dan periode penayangan konten FILKOM.</p>
+
+        <label for="lokasi">Lokasi signage</label>
+        <select id="lokasi" name="lokasi" required>
+          <option selected>Semua signage FILKOM UB</option>
+        </select>
+
+        <label for="mulai">Mulai tayang</label>
+        <input type="date" id="mulai" name="mulai" min="2026-11-01" max="2027-10-31"
+               value="2026-11-25" required>
+
+        <label for="durasi">Durasi tayang</label>
+        <select id="durasi" name="durasi" required>
+          <option selected>1 hari</option>
+        </select>
+      </fieldset>
+
+      <section aria-labelledby="judul-pengaju">
+        <h2 id="judul-pengaju">Pengaju &amp; konten</h2>
+        <dl>
+          <dt>Kegiatan · unit kerja</dt>
+          <dd>RABIR AF · SGE</dd>
+          <dt>Penanggung jawab</dt>
+          <dd>Iqbal Fahmi · <a href="mailto:iqbal@example.org">iqbal@example.org</a></dd>
+          <dt>Konten contoh</dt>
+          <dd>RABIR AF.mp4</dd>
+        </dl>
+      </section>
+    </form>
+  </main>
+
+  <!-- Ringkasan -->
+  <aside aria-labelledby="judul-ringkasan">
+    <h2 id="judul-ringkasan">Ringkasan pengajuan</h2>
+    <dl>
+      <dt>Lokasi signage</dt>
+      <dd><output for="lokasi">Semua signage FILKOM UB</output></dd>
+      <dt>Mulai tayang</dt>
+      <dd><output for="mulai">25 November 2026</output></dd>
+      <dt>Durasi tayang</dt>
+      <dd><output for="durasi">1 hari</output></dd>
+    </dl>
+    <p>Video MP4 potret 1080 × 1920 px, maksimal 45 detik, tanpa audio.</p>
+    <button type="button" aria-haspopup="dialog">Lihat ketentuan</button>
+    <button type="submit" form="form-publikasi">Tinjau pengajuan</button>
+  </aside>
+
+</body>
+</html>

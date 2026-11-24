@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajukan Peralatan · FIRA</title>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
+      <span>FIRA</span>
+    </a>
+
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="prosedur.html">Prosedur</a></li>
+        <li><a href="pinjam.html" aria-current="page">Pinjam Fasilitas</a></li>
+      </ul>
+    </nav>
+
+    <button type="button">Notifikasi</button>
+
+    <div>
+      <img src="assets/avatar.png" alt="" width="48" height="48">
+      <p>Iqbal Fahmi</p>
+      <p>NIM 255150200111024</p>
+    </div>
+  </header>
+
+  <main>
+    <h1>Ajukan Peralatan</h1>
+
+    <!-- Kategori -->
+    <nav aria-label="Kategori fasilitas">
+      <ul>
+        <li><a href="pinjam.html">Ruangan</a></li>
+        <li><a href="peralatan.html" aria-current="page">Peralatan</a></li>
+        <li><a href="publikasi.html">Publikasi</a></li>
+      </ul>
+    </nav>
+
+    <!-- Formulir -->
+    <form id="form-peralatan" novalidate>
+      <h2>Detail peminjaman</h2>
+      <p>Tambahkan peralatan dan isi jumlahnya untuk satu periode peminjaman.</p>
+
+      <section aria-labelledby="judul-kegiatan">
+        <h3 id="judul-kegiatan">Kegiatan &amp; dokumen</h3>
+        <dl>
+          <dt>Agenda</dt>
+          <dd>Demo Multimedia</dd>
+          <dt>Pengaju</dt>
+          <dd>Iqbal Fahmi · SGE</dd>
+          <dt>Dokumen contoh</dt>
+          <dd>Surat peminjaman.pdf</dd>
+        </dl>
+      </section>
+
+      <fieldset>
+        <legend>Peralatan yang dipinjam</legend>
+        <button type="button" aria-haspopup="dialog">+ Tambah alat</button>
+        <p id="alat-kosong">Belum ada peralatan. Pilih Tambah alat.</p>
+        <ul id="daftar-alat"></ul>
+      </fieldset>
+
+      <!-- Baris alat (diisi JS) -->
+      <template id="baris-alat">
+        <li>
+          <label for="jumlah-tv">TV</label>
+          <p id="stok-tv">Tersedia 5 unit</p>
+          <input type="number" id="jumlah-tv" name="jumlah-tv" min="1" max="5" inputmode="numeric"
+                 aria-describedby="stok-tv error-tv">
+          <span>unit</span>
+          <button type="button" aria-label="Hapus TV">Hapus</button>
+          <p id="error-tv" hidden>Jumlah barang yang dipinjam melebihi ketersediaan.</p>
+        </li>
+      </template>
+
+      <fieldset>
+        <legend>Periode peminjaman</legend>
+
+        <label for="tgl-ambil">Tanggal pengambilan</label>
+        <input type="date" id="tgl-ambil" name="tgl-ambil" min="2026-11-01" max="2027-10-31"
+               value="2026-11-25" required>
+
+        <label for="tgl-kembali">Tanggal pengembalian</label>
+        <input type="date" id="tgl-kembali" name="tgl-kembali" min="2026-11-01" max="2027-10-31"
+               value="2026-11-26" required aria-describedby="error-tanggal">
+        <p id="error-tanggal" hidden>Tanggal pengembalian harus sama atau sesudah tanggal pengambilan.</p>
+      </fieldset>
+    </form>
+  </main>
+
+  <!-- Ringkasan -->
+  <aside aria-labelledby="judul-ringkasan">
+    <h2 id="judul-ringkasan">Ringkasan pengajuan</h2>
+    <dl>
+      <dt>Peralatan dan jumlah</dt>
+      <dd><output>Belum ada peralatan.</output></dd>
+      <dt>Pengambilan</dt>
+      <dd><output for="tgl-ambil">25 Nov 2026</output></dd>
+      <dt>Pengembalian</dt>
+      <dd><output for="tgl-kembali">26 Nov 2026</output></dd>
+    </dl>
+    <p>Cek kelengkapan alat saat serah terima.</p>
+    <button type="button" aria-haspopup="dialog">Lihat ketentuan</button>
+    <button type="submit" form="form-peralatan">Tinjau pengajuan</button>
+  </aside>
+
+</body>
+</html>
