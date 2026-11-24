@@ -32,7 +32,7 @@ function formatTanggal(nilai, bulan = "short") {
 }
 
 /* ---------- Ruangan: tanggal → ruang → slot → form ---------- */
-const pilihan = { tanggal: "11 November 2026", ruang: "" };
+const pilihan = { iso: "2026-11-11", tanggal: "11 November 2026", ruang: "" };
 
 // Agenda per tanggal (dari data desain), kunci = tanggal ISO
 const AGENDA = {
@@ -68,24 +68,77 @@ document.querySelectorAll(".hari[data-tanggal]").forEach((tombol) => {
   tombol.addEventListener("click", () => {
     document.querySelectorAll(".hari[data-tanggal]").forEach((t) => t.setAttribute("aria-pressed", "false"));
     tombol.setAttribute("aria-pressed", "true");
+    pilihan.iso = tombol.dataset.tanggal;
     pilihan.tanggal = formatTanggal(tombol.dataset.tanggal, "long");
     $("slot-tanggal").textContent = pilihan.tanggal;
     tampilkanAgenda(tombol.dataset.tanggal);
   });
 });
 
+// Slot harian & ruang yang sudah terpakai (dari data desain)
+const SLOT = ["08.00–10.00", "10.00–12.00", "12.00–13.00", "13.00–15.00", "15.00–17.00", "17.00–20.00"];
+const TERPAKAI = [
+  { ruang: "Ruang GKM 4.1 (Kanan)", tanggal: "2026-11-11", jam: "12.00–13.00", acara: "contoh desain" },
+  { ruang: "Ruang GKM 3.1", tanggal: "2026-11-19", jam: "17.00–20.00", acara: "RABIR AF" },
+  { ruang: "Ruang GKM 4.1 (Kanan)", tanggal: "2026-11-25", jam: "10.00–12.00", acara: "Koordinasi Panitia" },
+];
+
+// "10.00–12.00" → [600, 720] (menit)
+function rentang(jam) {
+  return jam.split("–").map((t) => {
+    const [h, m] = t.split(".").map(Number);
+    return h * 60 + m;
+  });
+}
+
+function bentrok(a, b) {
+  const [mulaiA, selesaiA] = rentang(a);
+  const [mulaiB, selesaiB] = rentang(b);
+  return mulaiA < selesaiB && mulaiB < selesaiA;
+}
+
+console.assert(bentrok("10.00–12.00", "11.00–13.00") && !bentrok("10.00–12.00", "12.00–13.00"), "cek bentrok");
+
+function tampilkanSlot() {
+  const pakai = TERPAKAI.filter((t) => t.ruang === pilihan.ruang && t.tanggal === pilihan.iso);
+  $("slot-ruang").textContent = `${pilihan.ruang} · ${pilihan.tanggal}`;
+  $("slot-daftar").replaceChildren(...SLOT.map((jam) => {
+    const tabrak = pakai.find((t) => bentrok(jam, t.jam));
+    const li = document.createElement("li");
+    li.innerHTML = `<span><strong></strong><br><span></span></span><button type="button" class="btn btn--sm"></button>`;
+    li.querySelector("strong").textContent = `${jam} WIB`;
+    const status = li.querySelector("span span");
+    const tombol = li.querySelector("button");
+    if (tabrak) {
+      status.className = "error";
+      status.textContent = `Bentrok · ${tabrak.acara}`;
+      tombol.classList.add("btn--secondary");
+      tombol.disabled = true;
+      tombol.textContent = "Tidak tersedia";
+    } else {
+      status.className = "hint";
+      status.textContent = "Tersedia";
+      tombol.classList.add("btn--primary");
+      tombol.dataset.jam = `${jam} WIB`;
+      tombol.setAttribute("aria-label", `Pilih slot ${jam} WIB`);
+      tombol.textContent = "Pilih slot";
+    }
+    return li;
+  }));
+}
+
 document.querySelectorAll("[data-ruang]").forEach((tombol) => {
   tombol.addEventListener("click", () => {
     pilihan.ruang = tombol.dataset.ruang;
-    $("slot-ruang").textContent = `${pilihan.ruang} · ${pilihan.tanggal}`;
+    tampilkanSlot();
   });
 });
 
-document.querySelectorAll("[data-jam]").forEach((tombol) => {
-  tombol.addEventListener("click", () => {
-    const query = new URLSearchParams({ ruang: pilihan.ruang, jadwal: `${pilihan.tanggal} · ${tombol.dataset.jam}` });
-    location.href = `ajukan-ruangan.html?${query}`;
-  });
+$("slot-daftar").addEventListener("click", (event) => {
+  const tombol = event.target.closest("[data-jam]");
+  if (!tombol) return;
+  const query = new URLSearchParams({ ruang: pilihan.ruang, jadwal: `${pilihan.tanggal} · ${tombol.dataset.jam}` });
+  location.href = `ajukan-ruangan.html?${query}`;
 });
 
 /* ---------- Ruangan: jalur Individu ---------- */
