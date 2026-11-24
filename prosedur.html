@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prosedur · FIRA</title>
+</head>
+<body>
+
+  <header>
+    <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
+      <span>FIRA</span>
+    </a>
+
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="prosedur.html" aria-current="page">Prosedur</a></li>
+        <li><a href="pinjam.html">Pinjam Fasilitas</a></li>
+      </ul>
+    </nav>
+
+    <button type="button">Notifikasi</button>
+
+    <div>
+      <img src="assets/avatar.png" alt="" width="48" height="48">
+      <p>Iqbal Fahmi</p>
+      <p>NIM 255150200111024</p>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="judul-prosedur">
+      <h1 id="judul-prosedur">Sebelum kamu mengajukan</h1>
+      <p>Cek alur pengajuan dan siapkan dokumen sesuai fasilitas yang kamu pilih.</p>
+      <a href="pinjam.html">Pilih Fasilitas <span aria-hidden="true">→</span></a>
+    </section>
+
+    <!-- Alur peminjaman -->
+    <section aria-labelledby="judul-alur">
+      <h2 id="judul-alur">Alur peminjaman</h2>
+      <ol>
+        <li>
+          <h3>Pengajuan oleh peminjam</h3>
+          <p>Isi formulir dan cantumkan tautan dokumen pendukung.</p>
+        </li>
+        <li>
+          <h3>Verifikasi BEM</h3>
+          <p>BEM memeriksa kelengkapan dokumen dan jadwal.</p>
+        </li>
+        <li>
+          <h3>Persetujuan Perkap</h3>
+          <p>Pengajuan diteruskan ke Perkap untuk persetujuan.</p>
+        </li>
+        <li>
+          <h3>Pemeriksaan teknisi / satpam</h3>
+          <p>Fasilitas diperiksa sebelum digunakan.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Checklist dokumen -->
+    <section aria-labelledby="judul-checklist">
+      <h2 id="judul-checklist">Checklist dokumen</h2>
+      <ul>
+        <li>
+          <input type="checkbox" id="cek-surat" aria-describedby="bantu-surat">
+          <label for="cek-surat">Surat peminjaman</label>
+          <p id="bantu-surat">Pastikan tanda tangan yang diperlukan sudah lengkap.</p>
+        </li>
+        <li>
+          <input type="checkbox" id="cek-drive" aria-describedby="bantu-drive">
+          <label for="cek-drive">Tautan Google Drive</label>
+          <p id="bantu-drive">Berikan akses Editor pada dokumen untuk email UB.</p>
+        </li>
+        <li>
+          <input type="checkbox" id="cek-pendukung" aria-describedby="bantu-pendukung">
+          <label for="cek-pendukung">Dokumen pendukung</label>
+          <p id="bantu-pendukung">Siapkan lampiran yang relevan dengan kegiatanmu.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Peraturan per kategori -->
+    <section aria-labelledby="judul-peraturan">
+      <h2 id="judul-peraturan">Peraturan per kategori</h2>
+      <ul>
+        <li>
+          <button type="button" aria-haspopup="dialog" aria-describedby="ringkas-ruangan">Ruangan</button>
+          <p id="ringkas-ruangan">Ajukan setidaknya H-14 bila memungkinkan.</p>
+        </li>
+        <li>
+          <button type="button" aria-haspopup="dialog" aria-describedby="ringkas-peralatan">Peralatan</button>
+          <p id="ringkas-peralatan">Cek stok selama rentang tanggal pinjam.</p>
+        </li>
+        <li>
+          <button type="button" aria-haspopup="dialog" aria-describedby="ringkas-publikasi">Publikasi</button>
+          <p id="ringkas-publikasi">Cek format video dan lokasi signage.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+</body>
+</html>
