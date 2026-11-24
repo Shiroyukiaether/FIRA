@@ -103,19 +103,19 @@ Multi-halaman (satu file HTML per layar) dipilih karena paling mudah dipahami pe
 
 Setiap tahap bisa dibuka di browser dan dicek sebelum lanjut. Bagian bertanda ✍️ adalah bagian yang kamu tulis sendiri; sisanya saya siapkan.
 
-### Tahap 0 — Persiapan
+### Tahap 0 — Persiapan ✅
 - Pindahkan `index.html`, `styles.css`, `app.js`, `prototype-data.js` ke `_figma-export/`.
 - Pindahkan aset ke `assets/`.
 - **Selesai bila:** `_figma-export/index.html` masih bisa dibuka seperti sebelumnya.
 
-### Tahap 1 — Design tokens (D1, C1, B3, D3)
+### Tahap 1 — Design tokens (D1, C1, B3, D3) ✅
 - `tokens.css`: primitive (`--navy-900`, `--orange-400`, `--space-2: 8px`, …) lalu semantic (`--color-action-primary`, `--color-status-warning`, `--text-body`, …).
 - Petakan ±40 warna ekspor ke ±12 token; perbaiki border agar ≥3:1.
 - Skala font 12/16/20/24/32, spasi 4/8/16/24/32/48, radius cukup 3 nilai (8/12/24 + pill).
 - ✍️ Kamu menentukan warna accent tunggal (D3) dan menghitung ulang kontrasnya.
 - **Selesai bila:** semua token terdokumentasi di komentar dan lolos cek kontras.
 
-### Tahap 2 — Atom & molekul (A3, A4, E1, D4)
+### Tahap 2 — Atom & molekul (A3, A4, E1, D4) ✅
 - `<button>` dengan varian primary / secondary / destructive dan 6 status (default, hover, focus, active, disabled, loading).
 - Badge status (warna + ikon SVG + teks).
 - Field: `<label>` di atas + `<input>` (tinggi ≥40–48 px) + helper text + pesan error.
@@ -123,23 +123,23 @@ Setiap tahap bisa dibuka di browser dan dicek sebelum lanjut. Bagian bertanda �
 - ✍️ Kamu menulis CSS status `:hover` / `:active` / `:disabled` tombol.
 - **Selesai bila:** semua komponen bisa dioperasikan hanya dengan keyboard.
 
-### Tahap 3 — Template layout (A1, A2, B1, B2)
+### Tahap 3 — Template layout (A1, A2, B1, B2) ✅
 - `<header>` (logo + profil) → `<nav>` (3 menu) → `<main>` → `<aside>` (kalender) → `<footer>`.
 - Container 1200 px, grid 12 kolom (dashboard 8 + 4), gutter 24 px; turun jadi 1 kolom di <576 px.
 - **Selesai bila:** dashboard kosong rapi di 375, 768, dan 1280 px.
 
-### Tahap 4 — Layar satu per satu
+### Tahap 4 — Layar satu per satu ✅
 Urutan: Login → Dashboard → Prosedur → Pinjam Fasilitas → Ajukan.
 - Dashboard: `<h1>` sapaan, `<h2>` "Status peminjaman", kartu status sebagai `<article>`, kalender di `<aside>`.
 - **Selesai bila:** tiap layar mirip referensi Figma di desktop dan tetap terbaca di HP.
 
-### Tahap 5 — Interaksi (A4, E2, E3, E4)
+### Tahap 5 — Interaksi (A4, E2, E3, E4) ✅
 - `<dialog>` untuk detail, catatan revisi, dan konfirmasi.
 - Dialog konfirmasi kirim dengan 4 elemen wajib: judul spesifik, konsekuensi, "Batal" (kiri) vs aksi (kanan), jalan keluar (×, Batal, Esc).
 - Validasi onBlur, tombol "Ajukan" nonaktif sampai valid, state "Mengirim…" ±1 dtk, transisi 150–300 ms.
 - ✍️ Kamu menulis fungsi validasi satu field (mis. nomor HP / ID LINE).
 
-### Tahap 6 — Verifikasi
+### Tahap 6 — Verifikasi ✅
 - Cek kontras semua pasangan warna yang dipakai.
 - Jalankan seluruh alur hanya dengan keyboard.
 - Cek di 375 / 768 / 1280 px.
@@ -153,3 +153,18 @@ Urutan: Login → Dashboard → Prosedur → Pinjam Fasilitas → Ajukan.
 1. **Setuju bangun ulang** (rekomendasi) atau tambal kode ekspor?
 2. ~~**F1:** gabungkan layar Ruangan/Peralatan/Publikasi?~~ Sudah: digabung sebagai tab di `pinjam.html`.
 3. ~~**D3:** warna aksi utama?~~ Sudah: navy `#002647` untuk tombol aksi (sesuai tombol SSO, Tinjau, Ajukan di Figma); oranye hanya aksen (logo, tab aktif) dan CTA di atas latar gelap. Kontras dicek dengan `python3 tools/cek-kontras.py`.
+
+---
+
+## 5. Hasil verifikasi (Tahap 6)
+
+- Kontras: 18/18 pasangan token lolos WCAG AA (`python3 tools/cek-kontras.py`).
+- Cek otomatis per halaman: semua kontrol punya nama, semua input punya `<label>`, satu `<h1>`, heading tidak melompat, `lang="id"`, target ≥ 24 px.
+- Keyboard: urutan Tab mengikuti urutan visual; dialog memindahkan fokus ke dalam dan Esc mengembalikannya ke tombol pembuka.
+- Responsif: tanpa geser horizontal di 375 / 768 / 1280 px untuk semua layar dan tab.
+
+### Belum dikerjakan
+- Pengajuan terkirim belum muncul di dashboard (tidak ada penyimpanan data).
+- Overlay "Peminjaman Individu" dari Figma.
+- Agenda panel Ruangan hanya punya data 11 November.
+- Pilihan lengkap dropdown (Lembaga, Program Kerja, Agenda, Keperluan, Lokasi, Durasi).

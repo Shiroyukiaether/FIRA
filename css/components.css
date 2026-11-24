@@ -165,8 +165,8 @@ select:disabled {
 
 input[type="checkbox"],
 input[type="radio"] {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   margin: 0;
   vertical-align: middle;
   accent-color: var(--color-action-primary);
@@ -175,7 +175,8 @@ input[type="radio"] {
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
-  display: inline;
+  display: inline-block;
+  padding-block: var(--space-2);
   margin: 0 var(--space-6) 0 var(--space-2);
   vertical-align: middle;
   cursor: pointer;

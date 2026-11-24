@@ -387,7 +387,7 @@
 }
 
 .checklist .hint {
-  margin: var(--space-1) 0 0 calc(1.25rem + var(--space-2));
+  margin: 0 0 0 calc(1.5rem + var(--space-2));
 }
 
 /* ---------- Ringkasan (dl) ---------- */

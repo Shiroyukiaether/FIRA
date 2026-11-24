@@ -4,28 +4,43 @@ FILKOM Integrated Resource Access merupakan prototipe interaktif untuk pengajuan
 
 ## Menjalankan
 
-Unduh atau klon repositori, lalu buka `index.html` di browser. Seluruh aset disimpan bersama kode. Instalasi dan server tidak diperlukan.
-
-> **Sedang dibangun ulang** (branch `refactor/semantic-rebuild`, lihat `docs/rencana-perbaikan.md`).
-> Prototipe ekspor Figma yang asli kini ada di `_figma-export/index.html` (juga tersimpan di tag `v0-figma-export`).
-> Versi baru (5 layar inti): `index.html` (Login), `dashboard.html`, `prosedur.html`, `pinjam.html` (tab Ruangan/Peralatan/Publikasi), `ajukan-ruangan.html`.
+Unduh atau klon repositori, lalu buka `index.html` di browser. Tanpa instalasi, tanpa server, tanpa library.
 
 ## Alur demonstrasi
 
-1. Pilih **SSO Universitas Brawijaya** untuk membuka dashboard demo.
-2. Gunakan **Prosedur** untuk membaca panduan dan memeriksa kelengkapan dokumen.
-3. Pada **Pinjam Fasilitas**, pilih Ruangan, Peralatan, atau Publikasi.
-4. Coba tambah dua jenis alat dengan jumlah berbeda. Jumlah di atas stok dan tanggal pengembalian sebelum pengambilan akan menahan pengajuan.
-5. Tinjau lalu kirim pengajuan. Pada dashboard, buka **Lihat Detail** untuk melihat data yang dikirim.
+1. **Login** – pilih **SSO Universitas Brawijaya** untuk membuka dashboard demo.
+2. **Dashboard** – buka **Lihat Detail**, **Lihat Catatan**, **Tampilkan e-Pass**, atau **Notifikasi**.
+3. **Prosedur** – baca alur, centang checklist dokumen, buka panduan per kategori.
+4. **Pinjam Fasilitas** – pilih tab Ruangan, Peralatan, atau Publikasi.
+   - Ruangan: pilih tanggal bertanda panah → ruang → slot → formulir.
+   - Peralatan: tambah alat, isi jumlah. Jumlah di atas stok dan tanggal kembali sebelum tanggal ambil akan menahan pengajuan.
+5. **Ajukan** – isi formulir, konfirmasi, lalu kirim.
+
+SSO dan pengajuan berjalan sebagai simulasi di browser. Data kembali ke kondisi awal ketika halaman dimuat ulang.
 
 ## Isi repositori
 
-- `index.html` berisi tujuh layar dan templat overlay dari tab **HI-Fi FINAL EXTRA**. Teks, kartu, ikon, dan tombol dapat diedit di HTML.
-- `styles.css` mengatur tipografi, warna, tata letak, dan tampilan gulir. Komposisi desktop mengikuti kanvas asli 1440 × 810.
-- `prototype-data.js` memuat nilai awal dan hubungan antarinteraksi yang diterjemahkan dari Figma.
-- `app.js` menangani navigasi, dialog, interaksi keyboard, perubahan formulir, dan validasi.
-- `avatar.png` merupakan aset profil pada desain sumber.
+| Path | Isi |
+|---|---|
+| `index.html` | Layar 1 · Login |
+| `dashboard.html` | Layar 2 · Dashboard & status peminjaman |
+| `prosedur.html` | Layar 3 · Prosedur & peraturan |
+| `pinjam.html` | Layar 4 · Pinjam Fasilitas (tab Ruangan / Peralatan / Publikasi) |
+| `ajukan-ruangan.html` | Layar 5 · Formulir peminjaman ruangan |
+| `css/tokens.css` | Design tokens: warna, spasi, tipografi, radius |
+| `css/base.css` | Font, reset, heading, fokus keyboard |
+| `css/components.css` | Tombol, badge, field, kartu, dialog |
+| `css/layout.css` | Container, grid 12 kolom, header, pola halaman |
+| `js/` | Dialog, tab, validasi formulir, logika per halaman |
+| `docs/komponen.html` | Etalase semua komponen |
+| `docs/rencana-perbaikan.md` | Audit & rencana berdasarkan materi IMK 05 dan 06 |
+| `tools/cek-kontras.py` | Cek kontras WCAG 2.2 semua pasangan token |
+| `_figma-export/` | Ekspor Figma asli, hanya sebagai referensi (juga di tag `v0-figma-export`) |
 
-SSO dan pengajuan berjalan sebagai simulasi di browser. Data kembali ke kondisi awal ketika halaman dimuat ulang. Kalender peralatan menggunakan periode demo November 2026 hingga Oktober 2027.
+## Cek kontras
+
+```bash
+python3 tools/cek-kontras.py
+```
 
 [Desain sumber di Figma](https://www.figma.com/design/2AMa50O6OcySAVAQYFsmX6/Proyek-Akhir-IMK-Tahap-2?node-id=194-32)
