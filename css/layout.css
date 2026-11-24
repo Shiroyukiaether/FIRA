@@ -269,8 +269,25 @@
   height: 2.75rem;
   border: 0;
   border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text);
   font-weight: var(--weight-semibold);
   cursor: pointer;
+}
+
+/* Tanggal yang sudah ada agenda: latar + titik */
+.hari--ada {
+  background: var(--color-cat-ruangan-bg);
+  color: var(--color-cat-ruangan);
+}
+
+.hari--ada::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: currentColor;
 }
 
 .hari--ruangan   { background: var(--color-cat-ruangan-bg);   color: var(--color-cat-ruangan); }

@@ -34,23 +34,25 @@ function formatTanggal(nilai, bulan = "short") {
 /* ---------- Ruangan: tanggal → ruang → slot → form ---------- */
 const pilihan = { tanggal: "11 November 2026", ruang: "" };
 
-// Agenda per tanggal (dari data desain)
+// Agenda per tanggal (dari data desain), kunci = tanggal ISO
 const AGENDA = {
-  "11 November 2026": { hari: "Rabu", acara: [
+  "2026-11-11": [
     { nama: "RAION EXHIBITION", jam: "08.00–16.00 WIB", tempat: "GKM Lt 1 Open Space", oleh: "RAION" },
     { nama: "PEMILWA FILKOM 2026", jam: "08.00–14.00 WIB", tempat: "Junction", oleh: "DPM" },
-  ] },
-  "19 November 2026": { hari: "Kamis", acara: [
+  ],
+  "2026-11-19": [
     { nama: "RABIR AF", jam: "17.00–20.00 WIB", tempat: "Ruang GKM 3.1", oleh: "SGE" },
-  ] },
-  "25 November 2026": { hari: "Rabu", acara: [
+  ],
+  "2026-11-25": [
     { nama: "Koordinasi Panitia", jam: "10.00–12.00 WIB", tempat: "Ruang GKM 4.1 (Kanan)" },
-  ] },
+  ],
 };
 
-function tampilkanAgenda(tanggal) {
-  const { hari, acara } = AGENDA[tanggal];
-  $("agenda-tanggal").textContent = `${hari}, ${tanggal} · ${acara.length} agenda`;
+function tampilkanAgenda(iso) {
+  const acara = AGENDA[iso] || [];
+  const hari = new Date(`${iso}T00:00`).toLocaleDateString("id-ID", { weekday: "long" });
+  const jumlah = acara.length ? `${acara.length} agenda` : "belum ada agenda";
+  $("agenda-tanggal").textContent = `${hari}, ${formatTanggal(iso, "long")} · ${jumlah}`;
   $("agenda-daftar").replaceChildren(...acara.map((a) => {
     const li = document.createElement("li");
     li.innerHTML = "<h4></h4><p></p><p></p>";
@@ -66,9 +68,9 @@ document.querySelectorAll(".hari[data-tanggal]").forEach((tombol) => {
   tombol.addEventListener("click", () => {
     document.querySelectorAll(".hari[data-tanggal]").forEach((t) => t.setAttribute("aria-pressed", "false"));
     tombol.setAttribute("aria-pressed", "true");
-    pilihan.tanggal = tombol.dataset.tanggal;
+    pilihan.tanggal = formatTanggal(tombol.dataset.tanggal, "long");
     $("slot-tanggal").textContent = pilihan.tanggal;
-    tampilkanAgenda(pilihan.tanggal);
+    tampilkanAgenda(tombol.dataset.tanggal);
   });
 });
 
