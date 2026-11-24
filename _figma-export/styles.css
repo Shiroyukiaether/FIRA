@@ -1,7 +1,7 @@
 /* FIRA · Hi-Fi FINAL EXTRA. Desktop design coordinates are scaled as a unit. */
 @font-face {
   font-family: Inter;
-  src: url("InterVariable.woff2") format("woff2");
+  src: url("../assets/InterVariable.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -807,7 +807,7 @@ body { overflow: hidden; color: #112b44; }
 
 .appearance-81 {
   position: absolute;
-  background: url("avatar.png") center / cover no-repeat;
+  background: url("../assets/avatar.png") center / cover no-repeat;
 }
 
 .appearance-82 {
