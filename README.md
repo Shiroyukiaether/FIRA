@@ -8,7 +8,7 @@ Unduh atau klon repositori, lalu buka `index.html` di browser. Seluruh aset disi
 
 > **Sedang dibangun ulang** (branch `refactor/semantic-rebuild`, lihat `docs/rencana-perbaikan.md`).
 > Prototipe ekspor Figma yang asli kini ada di `_figma-export/index.html` (juga tersimpan di tag `v0-figma-export`).
-> Versi baru: buka `dashboard.html`.
+> Versi baru: buka `index.html` (Login), lalu `dashboard.html`.
 
 ## Alur demonstrasi
 
