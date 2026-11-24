@@ -280,6 +280,11 @@
   outline: 1px solid currentColor;
 }
 
+.hari[aria-pressed="true"] {
+  background: var(--color-cat-ruangan);
+  color: var(--color-text-on-action);
+}
+
 .legenda {
   display: flex;
   flex-wrap: wrap;
@@ -328,7 +333,7 @@
 }
 
 .segmen a:hover,
-.segmen a[aria-current="true"] {
+.segmen a[aria-selected="true"] {
   background: var(--color-bg-surface);
 }
 
@@ -444,4 +449,151 @@
 
 .site-footer p {
   margin: 0;
+}
+
+/* ---------- Aksi di kanan (dialog, form) ---------- */
+.aksi--kanan {
+  justify-content: flex-end;
+  margin-top: var(--space-6);
+}
+
+.aksi form {
+  display: contents;
+}
+
+/* ---------- Daftar pilihan (dialog) ---------- */
+.daftar-pilihan li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.daftar-pilihan li:last-child {
+  border-bottom: 0;
+}
+
+.daftar-pilihan .error,
+.daftar-pilihan .hint {
+  margin: 0;
+}
+
+.pilihan-alat,
+.notif-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: var(--size-target);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  color: var(--color-text);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pilihan-alat:hover,
+.notif-item:hover {
+  border-color: var(--color-border-control);
+  background: var(--color-bg-subtle);
+}
+
+.pilihan-alat:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pilihan-alat .hint,
+.notif-item .hint {
+  margin: 0;
+}
+
+.daftar-pilihan li:has(.pilihan-alat),
+#dlg-notifikasi li {
+  padding: var(--space-1) 0;
+  border: 0;
+}
+
+/* ---------- Baris alat (form peralatan) ---------- */
+.baris-alat {
+  display: grid;
+  grid-template-columns: 1fr 5rem auto auto;
+  grid-template-areas:
+    "nama  jumlah satuan hapus"
+    "stok  jumlah satuan hapus"
+    "error error  error  error";
+  align-items: center;
+  column-gap: var(--space-2);
+}
+
+.baris-alat label  { grid-area: nama; margin: 0; }
+.baris-alat .hint  { grid-area: stok; margin: 0; }
+.baris-alat input  { grid-area: jumlah; margin: 0; padding: 0 var(--space-2); }
+.baris-alat .satuan { grid-area: satuan; }
+.baris-alat .btn   { grid-area: hapus; }
+.baris-alat .error { grid-area: error; margin: var(--space-2) 0 0; }
+
+/* ---------- Isi dialog ---------- */
+.tahapan {
+  padding-left: var(--space-6);
+}
+
+.tahapan li {
+  margin-bottom: var(--space-2);
+}
+
+.tahapan li[aria-current="step"] strong {
+  color: var(--color-status-warning);
+}
+
+.kode {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.02em;
+}
+
+.qr {
+  margin: 0 0 var(--space-4);
+}
+
+.qr__kotak {
+  width: 8rem;
+  height: 8rem;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-sm);
+  background:
+    repeating-conic-gradient(var(--color-text) 0 25%, var(--color-bg-surface) 0 50%) 0 0 / 1rem 1rem;
+}
+
+.daftar-ruang details {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.daftar-ruang summary {
+  min-height: var(--size-target);
+  padding: var(--space-2) 0;
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+}
+
+.daftar-ruang h3 {
+  margin: var(--space-2) 0 var(--space-1);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-text-muted);
+}
+
+.daftar-ruang ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  list-style: none;
 }

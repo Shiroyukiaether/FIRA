@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
+  <script src="js/dialog.js" defer></script>
 </head>
 <body>
 
@@ -25,7 +26,7 @@
       </ul>
     </nav>
 
-    <button type="button" class="btn btn--secondary notif">Notifikasi</button>
+    <button type="button" class="btn btn--secondary notif" aria-haspopup="dialog" data-dialog="dlg-notifikasi">Notifikasi</button>
 
     <div class="profil">
       <img src="assets/avatar.png" alt="" width="48" height="48">
@@ -91,20 +92,86 @@
       <h2 id="judul-peraturan">Peraturan per kategori</h2>
       <ul class="list-plain checklist">
         <li>
-          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" aria-describedby="ringkas-ruangan">Ruangan</button>
+          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-panduan-ruangan" aria-describedby="ringkas-ruangan">Ruangan</button>
           <p id="ringkas-ruangan">Ajukan setidaknya H-14 bila memungkinkan.</p>
         </li>
         <li>
-          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" aria-describedby="ringkas-peralatan">Peralatan</button>
+          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-panduan-peralatan" aria-describedby="ringkas-peralatan">Peralatan</button>
           <p id="ringkas-peralatan">Cek stok selama rentang tanggal pinjam.</p>
         </li>
         <li>
-          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" aria-describedby="ringkas-publikasi">Publikasi</button>
+          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-panduan-publikasi" aria-describedby="ringkas-publikasi">Publikasi</button>
           <p id="ringkas-publikasi">Cek format video dan lokasi signage.</p>
         </li>
       </ul>
     </section>
   </main>
+
+  <!-- Dialog -->
+  <dialog id="dlg-panduan-ruangan" class="dialog" aria-labelledby="dlg-panduan-ruangan-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-panduan-ruangan-judul">Ruangan</h2>
+    <p class="hint">Ketentuan peminjaman ruangan</p>
+    <ul>
+      <li>Disarankan mengajukan minimal H-14 sebelum tanggal peminjaman.</li>
+      <li>Gladi bersih maksimal 2 jam.</li>
+      <li>Pengajuan di luar jam operasional akan ditolak.</li>
+      <li>Pembatalan minimal H-5 sebelum tanggal peminjaman.</li>
+    </ul>
+    <div class="aksi aksi--kanan">
+      <a class="btn btn--primary" href="pinjam.html#ruangan">Lanjut ke Pilih Fasilitas <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </dialog>
+  <dialog id="dlg-panduan-peralatan" class="dialog" aria-labelledby="dlg-panduan-peralatan-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-panduan-peralatan-judul">Peralatan</h2>
+    <p class="hint">Panduan pengajuan</p>
+    <ul>
+      <li>Untuk alat band di SIPERAT, pilih tanggal ambil dan kembali untuk melihat stok.</li>
+      <li>Periksa jumlah unit dan kondisi alat sebelum mengajukan.</li>
+    </ul>
+    <div class="aksi aksi--kanan">
+      <a class="btn btn--primary" href="pinjam.html#peralatan">Buka Peralatan <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </dialog>
+  <dialog id="dlg-panduan-publikasi" class="dialog" aria-labelledby="dlg-panduan-publikasi-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-panduan-publikasi-judul">Ketentuan Publikasi</h2>
+    <p class="hint">Form Tayangan Konten Signage FILKOM UB</p>
+    <h3>Data wajib diisi</h3>
+    <ul>
+      <li>Email dan nama PIC</li>
+      <li>Unit kerja dan nama kegiatan</li>
+      <li>Lokasi dan waktu tampilan</li>
+      <li>Konten video</li>
+    </ul>
+    <h3>Lokasi signage</h3>
+    <ul>
+      <li>Semua signage di FILKOM UB</li>
+      <li>Auditorium Algoritma · Gedung G Lt. 2</li>
+      <li>Mini Teater Heuristik · Gedung A Lt. 2</li>
+    </ul>
+    <h3>Durasi &amp; format</h3>
+    <ul>
+      <li>Durasi opsional. Kosong berarti 1 hari. Maksimal 7 hari.</li>
+      <li>Video MP4 · Full HD potret 1080 × 1920 px</li>
+      <li>Maksimal 45 detik · tanpa audio</li>
+    </ul>
+    <p>Pastikan konten sudah sesuai sebelum dikirim.</p>
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc-eu6-PfNfXGsUTqfbMP44Bq1j_Z0twZQRPSfmwUkxqDh97g/viewform" target="_blank" rel="noopener noreferrer">Buka Form Publikasi <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg><span class="hint"> (tab baru)</span></a></p>
+    <div class="aksi aksi--kanan">
+      <a class="btn btn--primary" href="pinjam.html#publikasi">Ajukan Publikasi <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </dialog>
+  <dialog id="dlg-notifikasi" class="dialog" aria-labelledby="dlg-notifikasi-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-notifikasi-judul">Notifikasi</h2>
+    <ul class="list-plain">
+      <li><a class="notif-item" href="dashboard.html"><span><strong>Dokumen perlu direvisi</strong><br><span class="hint">Workshop Pemrograman · TV</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><a class="notif-item" href="dashboard.html"><span><strong>Pengajuan sedang diperiksa</strong><br><span class="hint">RABIR AF · SGE</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><a class="notif-item" href="dashboard.html"><span><strong>Publikasi disetujui</strong><br><span class="hint">Publikasi Poster</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+    </ul>
+  </dialog>
 
 </body>
 </html>

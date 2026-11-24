@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
+  <script src="js/dialog.js" defer></script>
 </head>
 <body>
 
@@ -27,7 +28,7 @@
       </ul>
     </nav>
 
-    <button type="button" class="btn btn--secondary notif">Notifikasi</button>
+    <button type="button" class="btn btn--secondary notif" aria-haspopup="dialog" data-dialog="dlg-notifikasi">Notifikasi</button>
 
     <div class="profil">
       <img src="assets/avatar.png" alt="" width="48" height="48">
@@ -65,7 +66,7 @@
             </p>
             <p class="badge badge--warning"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Menunggu verifikasi BEM</p>
             <p>Tahap 1 dari 3 · Verifikasi BEM</p>
-            <button type="button" class="btn btn--secondary" aria-describedby="pengajuan-rabir">
+            <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-detail-rabir" aria-describedby="pengajuan-rabir">
               Lihat Detail <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
             </button>
           </article>
@@ -77,7 +78,7 @@
             <p>TV · <time datetime="2026-11-16">16 November 2026</time></p>
             <p class="badge badge--danger"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg> Perlu revisi</p>
             <p class="text-danger">Tanda tangan Ketua Pelaksana masih diperlukan.</p>
-            <button type="button" class="btn btn--secondary" aria-describedby="pengajuan-workshop">
+            <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-revisi-workshop" aria-describedby="pengajuan-workshop">
               Lihat Catatan <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
             </button>
           </article>
@@ -89,7 +90,7 @@
             <p>Publikasi · <time datetime="2026-11-14">14 November 2026</time></p>
             <p class="badge badge--success"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Disetujui</p>
             <p>Pengajuan publikasi telah disetujui.</p>
-            <button type="button" class="btn btn--secondary" aria-describedby="publikasi-poster">
+            <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-detail-publikasi" aria-describedby="publikasi-poster">
               Lihat Detail <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
             </button>
           </article>
@@ -103,7 +104,7 @@
               <time datetime="2026-11-25T10:00">25 Nov 2026 · 10.00–12.00 WIB</time>
             </p>
             <p class="badge badge--success"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Disetujui</p>
-            <button type="button" class="btn btn--secondary" aria-describedby="pengajuan-koordinasi">
+            <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-epass" aria-describedby="pengajuan-koordinasi">
               Tampilkan e-Pass <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
             </button>
           </article>
@@ -134,13 +135,13 @@
         <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
         <tr>
           <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
-          <td><button type="button" class="hari hari--publikasi" aria-label="14 November: Publikasi">14</button></td>
+          <td><button type="button" class="hari hari--publikasi" aria-haspopup="dialog" data-dialog="dlg-detail-publikasi" aria-label="14 November: Publikasi">14</button></td>
           <td>15</td>
         </tr>
         <tr>
-          <td><button type="button" class="hari hari--peralatan" aria-label="16 November: Peralatan">16</button></td>
+          <td><button type="button" class="hari hari--peralatan" aria-haspopup="dialog" data-dialog="dlg-revisi-workshop" aria-label="16 November: Peralatan">16</button></td>
           <td>17</td><td>18</td>
-          <td><button type="button" class="hari hari--ruangan" aria-label="19 November: Ruangan">19</button></td>
+          <td><button type="button" class="hari hari--ruangan" aria-haspopup="dialog" data-dialog="dlg-detail-rabir" aria-label="19 November: Ruangan">19</button></td>
           <td>20</td><td>21</td><td>22</td>
         </tr>
         <tr><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td></tr>
@@ -156,6 +157,70 @@
     </ul>
   </aside>
   </div>
+
+  <!-- Dialog -->
+  <dialog id="dlg-detail-rabir" class="dialog" aria-labelledby="dlg-detail-rabir-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-detail-rabir-judul">Detail peminjaman</h2>
+    <p>RABIR AF · SGE · Ruang GKM 3.1</p>
+    <p><time datetime="2026-11-19T17:00">Kamis, 19 November 2026 · 17.00–20.00 WIB</time></p>
+    <p class="badge badge--warning"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Menunggu verifikasi BEM</p>
+    <ol class="tahapan">
+      <li aria-current="step"><strong>Verifikasi BEM</strong><br><span class="hint">BEM sedang memeriksa dokumen dan jadwal.</span></li>
+      <li><strong>Persetujuan Perkap</strong><br><span class="hint">Tahap ini dimulai setelah verifikasi BEM.</span></li>
+      <li><strong>Pemeriksaan teknisi / satpam</strong><br><span class="hint">Pengecekan dilakukan sebelum fasilitas digunakan.</span></li>
+    </ol>
+    <p class="hint">Perubahan status akan muncul di Notifikasi.</p>
+  </dialog>
+  <dialog id="dlg-revisi-workshop" class="dialog" aria-labelledby="dlg-revisi-workshop-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-revisi-workshop-judul">Catatan revisi</h2>
+    <p>Workshop Pemrograman · Peralatan (TV)</p>
+    <p class="badge badge--danger"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg> Dokumen perlu diperbaiki</p>
+    <p>Surat peminjaman belum ditandatangani oleh Ketua Pelaksana.</p>
+    <p>Lengkapi tanda tangan lalu siapkan tautan dokumen yang telah diperbarui. Ajukan kembali setelah dokumen siap.</p>
+    <div class="aksi aksi--kanan">
+      <a class="btn btn--secondary" href="prosedur.html">Panduan dokumen</a>
+      <a class="btn btn--primary" href="pinjam.html#peralatan">Perbaiki &amp; Kirim Ulang</a>
+    </div>
+  </dialog>
+  <dialog id="dlg-detail-publikasi" class="dialog" aria-labelledby="dlg-detail-publikasi-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-detail-publikasi-judul">Detail publikasi</h2>
+    <p>Publikasi Signage · <time datetime="2026-11-14">14 November 2026</time></p>
+    <p class="badge badge--success"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Disetujui</p>
+    <p>Pengajuan publikasi signage telah disetujui.</p>
+    <div class="aksi aksi--kanan">
+      <a class="btn btn--secondary" href="prosedur.html">Panduan Publikasi <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </dialog>
+  <dialog id="dlg-epass" class="dialog" aria-labelledby="dlg-epass-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-epass-judul">e-Pass Akses Ruangan</h2>
+    <p class="badge badge--success"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Disetujui</p>
+    <p class="kode">FIRA-DEMO-RUANG-2026-025</p>
+    <figure class="qr">
+      <div class="qr__kotak" aria-hidden="true"></div>
+      <figcaption class="hint">QR contoh · tidak memberikan akses fasilitas.</figcaption>
+    </figure>
+    <dl class="ringkasan">
+      <dt>Kegiatan</dt><dd>Koordinasi Panitia</dd>
+      <dt>Ruangan</dt><dd>Ruang GKM 4.1 (Kanan)</dd>
+      <dt>Peminjam</dt><dd>Iqbal Fahmi</dd>
+      <dt>Masa berlaku</dt><dd><time datetime="2026-11-25T10:00">25 November 2026 · 10.00–12.00 WIB</time></dd>
+    </dl>
+    <p class="hint">Tunjukkan QR kepada petugas saat tiba. Tiket hanya berlaku untuk fasilitas dan jam yang tercantum.</p>
+    <form method="dialog" class="aksi aksi--kanan"><button class="btn btn--primary">Kembali ke Dashboard</button></form>
+  </dialog>
+  <dialog id="dlg-notifikasi" class="dialog" aria-labelledby="dlg-notifikasi-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-notifikasi-judul">Notifikasi</h2>
+    <ul class="list-plain">
+      <li><button type="button" class="notif-item" data-dialog="dlg-revisi-workshop"><span><strong>Dokumen perlu direvisi</strong><br><span class="hint">Workshop Pemrograman · TV</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></li>
+      <li><button type="button" class="notif-item" data-dialog="dlg-detail-rabir"><span><strong>Pengajuan sedang diperiksa</strong><br><span class="hint">RABIR AF · SGE</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></li>
+      <li><button type="button" class="notif-item" data-dialog="dlg-detail-publikasi"><span><strong>Publikasi disetujui</strong><br><span class="hint">Publikasi Poster</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></li>
+    </ul>
+  </dialog>
 
 </body>
 </html>

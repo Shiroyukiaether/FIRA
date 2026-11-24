@@ -63,6 +63,11 @@ textarea {
   color: inherit;
 }
 
+/* Atribut hidden selalu menang atas display dari class */
+[hidden] {
+  display: none !important;
+}
+
 /* Fokus keyboard */
 :focus-visible {
   outline: var(--focus-ring);

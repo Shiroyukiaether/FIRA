@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
+  <script src="js/dialog.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/ajukan.js" defer></script>
 </head>
 <body>
 
@@ -40,7 +43,7 @@
         <label for="pengaju-lembaga">Lembaga</label>
       </fieldset>
 
-      <fieldset>
+      <fieldset id="fieldset-lembaga">
         <legend>Tentang kegiatan</legend>
 
         <label for="lembaga">Lembaga <span aria-hidden="true">*</span></label>
@@ -101,9 +104,9 @@
       <dt>Pengaju</dt>
       <dd>Iqbal Fahmi · dari akun UB</dd>
       <dt>Ruangan</dt>
-      <dd>Ruang GKM 4.1 (Kanan)</dd>
+      <dd data-isi="ruang">Ruang GKM 4.1 (Kanan)</dd>
       <dt>Tanggal dan jam</dt>
-      <dd><time datetime="2026-11-11T10:00">11 November 2026 · 10.00–12.00 WIB</time></dd>
+      <dd data-isi="jadwal">11 November 2026 · 10.00–12.00 WIB</dd>
     </dl>
     <a href="pinjam.html#ruangan">Ubah ruang &amp; jadwal</a>
 
@@ -111,6 +114,28 @@
     <a href="prosedur.html">Lihat semua ketentuan <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
   </aside>
   </div>
+
+  <!-- Dialog -->
+  <dialog id="dlg-konfirmasi" class="dialog" aria-labelledby="dlg-konfirmasi-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-konfirmasi-judul">Ajukan peminjaman ruangan ke BEM?</h2>
+    <p>Pengajuan akan diteruskan untuk diverifikasi. Periksa kembali ruang, jadwal, dan dokumen sebelum mengirim.</p>
+    <dl class="ringkasan">
+      <dt>Ruangan</dt><dd data-isi="ruang">Ruang GKM 4.1 (Kanan)</dd>
+      <dt>Tanggal dan jam</dt><dd data-isi="jadwal">11 November 2026 · 10.00–12.00 WIB</dd>
+    </dl>
+    <div class="aksi aksi--kanan">
+      <form method="dialog"><button class="btn btn--secondary">Batal</button></form>
+      <button type="button" id="tombol-kirim" class="btn btn--primary">Ya, Ajukan</button>
+    </div>
+    <p class="hint">Tekan Esc untuk membatalkan.</p>
+  </dialog>
+  <dialog id="dlg-terkirim" class="dialog dialog--tengah" aria-labelledby="dlg-terkirim-judul">
+    <p class="ikon-besar"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></p>
+    <h2 id="dlg-terkirim-judul">Pengajuan terkirim</h2>
+    <p>Pengajuan diteruskan untuk ditinjau. Pantau perkembangannya melalui Status peminjaman.</p>
+    <a class="btn btn--primary" href="dashboard.html">Ke Dashboard <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+  </dialog>
 
 </body>
 </html>

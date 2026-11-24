@@ -199,10 +199,6 @@ input[type="radio"] + label {
   font-weight: var(--weight-medium);
 }
 
-.error[hidden] {
-  display: none;
-}
-
 /* ---------- Kartu ---------- */
 .card {
   padding: var(--space-6);
@@ -210,4 +206,62 @@ input[type="radio"] + label {
   border-radius: var(--radius-lg);
   background: var(--color-bg-surface);
   box-shadow: var(--shadow-card);
+}
+
+/* ---------- Dialog ---------- */
+.dialog {
+  width: min(36rem, calc(100% - 2 * var(--space-4)));
+  max-height: calc(100% - 2 * var(--space-8));
+  padding: var(--space-8) var(--space-6) var(--space-6);
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface);
+  color: var(--color-text);
+  box-shadow: 0 24px 48px rgba(0, 38, 71, 0.24);
+}
+
+.dialog::backdrop {
+  background: rgba(2, 27, 48, 0.45);
+}
+
+.dialog[open] {
+  animation: muncul var(--duration-base) ease-out;
+}
+
+@keyframes muncul {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+.dialog h2 {
+  padding-right: var(--space-12);
+}
+
+.dialog__tutup {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+}
+
+.dialog__tutup .btn {
+  width: 2.5rem;
+  padding: 0;
+}
+
+.dialog--tengah {
+  text-align: center;
+}
+
+.dialog--tengah h2 {
+  padding-right: 0;
+}
+
+.ikon-besar {
+  display: inline-grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--color-status-success-bg);
+  color: var(--color-status-success);
+  font-size: var(--text-h2);
 }

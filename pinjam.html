@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
+  <script src="js/dialog.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/tabs.js" defer></script>
+  <script src="js/pinjam.js" defer></script>
 </head>
 <body>
 
@@ -26,7 +30,7 @@
       </ul>
     </nav>
 
-    <button type="button" class="btn btn--secondary notif">Notifikasi</button>
+    <button type="button" class="btn btn--secondary notif" aria-haspopup="dialog" data-dialog="dlg-notifikasi">Notifikasi</button>
 
     <div class="profil">
       <img src="assets/avatar.png" alt="" width="48" height="48">
@@ -51,7 +55,7 @@
     <section id="ruangan" class="panel grid" aria-labelledby="judul-ruangan">
       <h2 id="judul-ruangan">Ruangan</h2>
 
-      <button type="button" class="btn btn--secondary" aria-haspopup="dialog">Lihat Daftar Ruangan</button>
+      <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-daftar-ruangan">Lihat Daftar Ruangan</button>
 
       <section class="card kalender col-6" aria-labelledby="judul-kalender">
         <h3 id="judul-kalender">Kalender Kegiatan</h3>
@@ -75,17 +79,17 @@
             <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
             <tr>
               <td>9</td><td>10</td>
-              <td><button type="button" class="hari hari--ruangan" aria-label="Pilih 11 November">11 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
+              <td><button type="button" class="hari hari--ruangan" aria-pressed="true" aria-haspopup="dialog" data-dialog="dlg-pilih-ruang" data-tanggal="11 November 2026" aria-label="Pilih 11 November">11 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>12</td><td>13</td><td>14</td><td>15</td>
             </tr>
             <tr>
               <td>16</td><td>17</td><td>18</td>
-              <td><button type="button" class="hari hari--ruangan" aria-label="Pilih 19 November">19 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
+              <td><button type="button" class="hari hari--ruangan" aria-pressed="false" aria-haspopup="dialog" data-dialog="dlg-pilih-ruang" data-tanggal="19 November 2026" aria-label="Pilih 19 November">19 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>20</td><td>21</td><td>22</td>
             </tr>
             <tr>
               <td>23</td><td>24</td>
-              <td><button type="button" class="hari hari--ruangan" aria-label="Pilih 25 November">25 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
+              <td><button type="button" class="hari hari--ruangan" aria-pressed="false" aria-haspopup="dialog" data-dialog="dlg-pilih-ruang" data-tanggal="25 November 2026" aria-label="Pilih 25 November">25 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>26</td><td>27</td><td>28</td><td>29</td>
             </tr>
             <tr><td>30</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -110,7 +114,7 @@
         </ul>
       </section>
 
-      <button type="button" class="btn btn--primary" aria-haspopup="dialog" aria-describedby="petunjuk-slot">
+      <button type="button" class="btn btn--primary" aria-haspopup="dialog" data-dialog="dlg-pilih-ruang" aria-describedby="petunjuk-slot">
         Pilih Ruang dan Slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
       </button>
       <p class="hint" id="petunjuk-slot">Pilih tanggal bertanda panah untuk melihat ruang dan jadwal.</p>
@@ -138,21 +142,20 @@
 
         <fieldset>
           <legend>Peralatan yang dipinjam</legend>
-          <button type="button" class="btn btn--secondary" aria-haspopup="dialog"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg> Tambah alat</button>
+          <button type="button" id="tombol-tambah-alat" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-pilih-alat"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg> Tambah alat</button>
           <p id="alat-kosong">Belum ada peralatan. Pilih Tambah alat.</p>
           <ul id="daftar-alat" class="list-plain checklist"></ul>
         </fieldset>
 
         <!-- Baris alat (diisi JS) -->
         <template id="baris-alat">
-          <li>
-            <label for="jumlah-tv">TV</label>
-            <p class="hint" id="stok-tv">Tersedia 5 unit</p>
-            <input type="number" id="jumlah-tv" name="jumlah-tv" min="1" max="5" inputmode="numeric"
-                   aria-describedby="stok-tv error-tv">
-            <span>unit</span>
-            <button type="button" class="btn btn--secondary btn--sm" aria-label="Hapus TV">Hapus</button>
-            <p class="error" id="error-tv" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg> Jumlah barang yang dipinjam melebihi ketersediaan.</p>
+          <li class="baris-alat">
+            <label></label>
+            <p class="hint"></p>
+            <input type="number" min="1" value="1" inputmode="numeric" required
+                   data-error-max="Jumlah barang yang dipinjam melebihi ketersediaan.">
+            <span class="satuan"></span>
+            <button type="button" class="btn btn--secondary btn--sm">Hapus</button>
           </li>
         </template>
 
@@ -165,8 +168,7 @@
 
           <label for="tgl-kembali">Tanggal pengembalian</label>
           <input type="date" id="tgl-kembali" name="tgl-kembali" min="2026-11-01" max="2027-10-31"
-                 value="2026-11-26" required aria-describedby="error-tanggal">
-          <p class="error" id="error-tanggal" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg> Tanggal pengembalian harus sama atau sesudah tanggal pengambilan.</p>
+                 value="2026-11-26" required>
         </fieldset>
       </form>
 
@@ -174,14 +176,14 @@
         <h3 id="judul-alat-ringkasan">Ringkasan pengajuan</h3>
         <dl>
           <dt>Peralatan dan jumlah</dt>
-          <dd><output>Belum ada peralatan.</output></dd>
+          <dd><output id="ringkas-alat">Belum ada peralatan.</output></dd>
           <dt>Pengambilan</dt>
-          <dd><output for="tgl-ambil">25 Nov 2026</output></dd>
+          <dd><output id="ringkas-ambil" for="tgl-ambil">25 Nov 2026</output></dd>
           <dt>Pengembalian</dt>
-          <dd><output for="tgl-kembali">26 Nov 2026</output></dd>
+          <dd><output id="ringkas-kembali" for="tgl-kembali">26 Nov 2026</output></dd>
         </dl>
         <p>Cek kelengkapan alat saat serah terima.</p>
-        <button type="button" class="btn btn--secondary" aria-haspopup="dialog">Lihat ketentuan</button>
+        <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-ketentuan-alat">Lihat ketentuan</button>
         <button type="submit" class="btn btn--primary" form="form-peralatan">Tinjau pengajuan</button>
       </aside>
     </section>
@@ -227,18 +229,203 @@
         <h3 id="judul-pub-ringkasan">Ringkasan pengajuan</h3>
         <dl>
           <dt>Lokasi signage</dt>
-          <dd><output for="lokasi">Semua signage FILKOM UB</output></dd>
+          <dd><output id="ringkas-lokasi" for="lokasi">Semua signage FILKOM UB</output></dd>
           <dt>Mulai tayang</dt>
-          <dd><output for="mulai">25 November 2026</output></dd>
+          <dd><output id="ringkas-mulai" for="mulai">25 November 2026</output></dd>
           <dt>Durasi tayang</dt>
-          <dd><output for="durasi">1 hari</output></dd>
+          <dd><output id="ringkas-durasi" for="durasi">1 hari</output></dd>
         </dl>
         <p>Video MP4 potret 1080 × 1920 px, maksimal 45 detik, tanpa audio.</p>
-        <button type="button" class="btn btn--secondary" aria-haspopup="dialog">Lihat ketentuan</button>
+        <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-ketentuan-pub">Lihat ketentuan</button>
         <button type="submit" class="btn btn--primary" form="form-publikasi">Tinjau pengajuan</button>
       </aside>
     </section>
   </main>
+
+  <!-- Dialog -->
+  <dialog id="dlg-daftar-ruangan" class="dialog" aria-labelledby="dlg-daftar-ruangan-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-daftar-ruangan-judul">Daftar Ruangan</h2>
+    <p class="hint">Lokasi dikelompokkan berdasarkan gedung, lantai, dan area parkir. Ketersediaan mengikuti tanggal dan jam peminjaman.</p>
+    <div class="daftar-ruang">
+      <details>
+        <summary>Gedung F</summary>
+        <h3>Parkiran Gedung F</h3>
+        <ul><li>Lapangan Parkir Gedung F</li><li>Basemen Parkir Gedung F</li></ul>
+        <h3>Lantai 2</h3>
+        <ul><li>F2.1</li><li>F2.2</li><li>F2.3</li><li>F2.4</li><li>F2.5</li><li>F2.6</li><li>F2.8</li><li>F2.9</li><li>F2.10 (Ruang Kerja Bersama Besar)</li><li>F2.12 (Ruang Kerja Bersama Kecil)</li></ul>
+        <h3>Lantai 3</h3>
+        <ul><li>F3.1</li><li>F3.2</li><li>F3.3</li><li>F3.4</li><li>F3.5</li><li>F3.6</li><li>F3.7</li><li>F3.8</li><li>F3.9</li><li>F3.10</li><li>F3.11</li><li>F3.12</li><li>F3.13</li><li>F3.14</li><li>F3.15</li><li>F3.16</li><li>F3.17</li><li>F3.18</li></ul>
+        <h3>Lantai 4</h3>
+        <ul><li>F4.1</li><li>F4.2</li><li>F4.3</li><li>F4.4</li><li>F4.5</li><li>F4.6</li><li>F4.7</li><li>F4.8</li><li>F4.9</li><li>F4.10</li><li>F4.11</li><li>F4.12</li><li>F4.13</li><li>F4.14</li><li>F4.15</li><li>F4.16</li><li>F4.17</li><li>F4.18</li></ul>
+        <h3>Lantai 12</h3>
+        <ul><li>Lapangan Badminton</li></ul>
+      </details>
+      <details>
+        <summary>Gedung Kreatifitas Mahasiswa (GKM)</summary>
+        <h3>Lantai 1</h3>
+        <ul><li>Ruang Terbuka Lantai 1</li></ul>
+        <h3>Lantai 2</h3>
+        <ul><li>Sekretariat BCC</li><li>Sekretariat BIOS</li><li>Sekretariat DPM</li><li>Sekretariat GDGoC</li><li>Sekretariat HMDTIF</li><li>Sekretariat K-RISMA</li><li>Sekretariat KBMDSI</li><li>Sekretariat LKI-AMD</li><li>Sekretariat LPM DISPLAY</li><li>Sekretariat OPTIIK</li><li>Sekretariat POROS</li><li>Sekretariat RAION</li><li>Sekretariat ROBOTIIK</li><li>Sekretariat SGE</li></ul>
+        <h3>Lantai 3</h3>
+        <ul><li>Ruang GKM 3.1</li><li>Ruang Terbuka Lantai 3</li></ul>
+        <h3>Lantai 4</h3>
+        <ul><li>Ruang GKM 4.1 (Kanan)</li><li>Ruang GKM 4.2 (Kiri)</li></ul>
+      </details>
+      <details>
+        <summary>Gedung G</summary>
+        <h3>Parkiran Gedung G</h3>
+        <ul><li>Basemen Parkir Gedung G</li></ul>
+        <h3>Lantai 2</h3>
+        <ul><li>Auditorium Algoritma</li></ul>
+      </details>
+      <details>
+        <summary>Gedung A</summary>
+        <h3>Parkiran Gedung A</h3>
+        <ul><li>Lapangan Parkir Gedung A</li></ul>
+        <h3>Lantai 1</h3>
+        <ul><li>UKS</li></ul>
+        <h3>Lantai 2</h3>
+        <ul><li>Teater Heuristik</li></ul>
+      </details>
+      <details>
+        <summary>Gedung Riset dan Inovasi</summary>
+        <ul><li>RV1.1</li><li>RV1.2</li><li>RV1.3</li><li>RV1.4</li><li>RV1.5</li></ul>
+      </details>
+      <details>
+        <summary>Lainnya</summary>
+        <ul><li>Ruang Kesenian Mahasiswa</li><li>Lapangan Basket</li><li>Musholla Ulul Albab</li></ul>
+      </details>
+    </div>
+    <div class="aksi aksi--kanan">
+      <button type="button" class="btn btn--primary" data-dialog="dlg-pilih-ruang">Pilih Ruang dan Slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </dialog>
+  <dialog id="dlg-pilih-ruang" class="dialog" aria-labelledby="dlg-pilih-ruang-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-pilih-ruang-judul">Pilih ruang dan slot</h2>
+    <p>Tanggal draf: <strong id="slot-tanggal">11 November 2026</strong></p>
+    <p class="hint">Slot contoh: 10.00–12.00 dan 13.00–15.00 tersedia. Pukul 12.00–13.00 bentrok.</p>
+    <ul class="list-plain daftar-pilihan">
+      <li>
+        <span><strong>Ruang GKM 4.1 (Kanan)</strong><br><span class="hint">GKM · Lantai 4</span></span>
+        <button type="button" class="btn btn--secondary btn--sm" data-dialog="dlg-slot" data-ruang="Ruang GKM 4.1 (Kanan)" aria-label="Lihat slot Ruang GKM 4.1 (Kanan)">Lihat slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      </li>
+      <li>
+        <span><strong>Ruang GKM 3.1</strong><br><span class="hint">GKM · Lantai 3</span></span>
+        <button type="button" class="btn btn--secondary btn--sm" data-dialog="dlg-slot" data-ruang="Ruang GKM 3.1" aria-label="Lihat slot Ruang GKM 3.1">Lihat slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      </li>
+      <li>
+        <span><strong>Auditorium Algoritma</strong><br><span class="hint">Gedung G · Lantai 2</span></span>
+        <button type="button" class="btn btn--secondary btn--sm" data-dialog="dlg-slot" data-ruang="Auditorium Algoritma" aria-label="Lihat slot Auditorium Algoritma">Lihat slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      </li>
+    </ul>
+  </dialog>
+  <dialog id="dlg-slot" class="dialog" aria-labelledby="dlg-slot-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-slot-judul">Pilih slot peminjaman</h2>
+    <p id="slot-ruang">Ruang GKM 4.1 (Kanan) · 11 November 2026</p>
+    <ul class="list-plain daftar-pilihan">
+      <li>
+        <span><strong>12.00–13.00 WIB</strong><br><span class="error"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg> Bentrok, sudah terpakai</span></span>
+        <button type="button" class="btn btn--secondary btn--sm" disabled>Tidak tersedia</button>
+      </li>
+      <li>
+        <span><strong>10.00–12.00 WIB</strong><br><span class="hint">Tersedia</span></span>
+        <button type="button" class="btn btn--primary btn--sm" data-jam="10.00–12.00 WIB" aria-label="Pilih slot 10.00–12.00 WIB">Pilih slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      </li>
+      <li>
+        <span><strong>13.00–15.00 WIB</strong><br><span class="hint">Tersedia</span></span>
+        <button type="button" class="btn btn--primary btn--sm" data-jam="13.00–15.00 WIB" aria-label="Pilih slot 13.00–15.00 WIB">Pilih slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      </li>
+    </ul>
+    <p class="hint">Ketersediaan di sini adalah data simulasi.</p>
+    <button type="button" class="btn btn--secondary" data-dialog="dlg-pilih-ruang"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg> Pilih ruang lain</button>
+  </dialog>
+  <dialog id="dlg-pilih-alat" class="dialog" aria-labelledby="dlg-pilih-alat-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-pilih-alat-judul">Pilih peralatan</h2>
+    <p class="hint">Gulir untuk melihat semua peralatan.</p>
+    <ul id="pilih-alat" class="list-plain daftar-pilihan"></ul>
+  </dialog>
+  <dialog id="dlg-tinjau-alat" class="dialog" aria-labelledby="dlg-tinjau-alat-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-tinjau-alat-judul">Tinjau pengajuan peralatan</h2>
+    <p>Demo Multimedia · Iqbal Fahmi</p>
+    <ul id="tinjau-alat"></ul>
+    <dl class="ringkasan">
+      <dt>Pengambilan</dt><dd id="tinjau-ambil"></dd>
+      <dt>Pengembalian</dt><dd id="tinjau-kembali"></dd>
+    </dl>
+    <div class="aksi aksi--kanan">
+      <form method="dialog"><button class="btn btn--secondary">Kembali</button></form>
+      <button type="button" class="btn btn--primary" data-kirim>Kirim pengajuan</button>
+    </div>
+  </dialog>
+  <dialog id="dlg-tinjau-pub" class="dialog" aria-labelledby="dlg-tinjau-pub-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-tinjau-pub-judul">Tinjau pengajuan publikasi</h2>
+    <p>RABIR AF · SGE</p>
+    <dl class="ringkasan">
+      <dt>Lokasi signage</dt><dd id="tinjau-lokasi"></dd>
+      <dt>Mulai tayang</dt><dd id="tinjau-mulai"></dd>
+      <dt>Durasi tayang</dt><dd id="tinjau-durasi"></dd>
+    </dl>
+    <div class="aksi aksi--kanan">
+      <form method="dialog"><button class="btn btn--secondary">Kembali</button></form>
+      <button type="button" class="btn btn--primary" data-kirim>Kirim pengajuan</button>
+    </div>
+  </dialog>
+  <dialog id="dlg-ketentuan-alat" class="dialog" aria-labelledby="dlg-ketentuan-alat-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-ketentuan-alat-judul">Ketentuan peralatan</h2>
+    <p class="hint">Panduan pengajuan</p>
+    <ul>
+      <li>Untuk alat band di SIPERAT, pilih tanggal ambil dan kembali untuk melihat stok.</li>
+      <li>Periksa jumlah unit dan kondisi alat sebelum mengajukan.</li>
+    </ul>
+  </dialog>
+  <dialog id="dlg-ketentuan-pub" class="dialog" aria-labelledby="dlg-ketentuan-pub-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-ketentuan-pub-judul">Ketentuan publikasi</h2>
+    <p class="hint">Form Tayangan Konten Signage FILKOM UB</p>
+    <h3>Data wajib diisi</h3>
+    <ul>
+      <li>Email dan nama PIC</li>
+      <li>Unit kerja dan nama kegiatan</li>
+      <li>Lokasi dan waktu tampilan</li>
+      <li>Konten video</li>
+    </ul>
+    <h3>Lokasi signage</h3>
+    <ul>
+      <li>Semua signage di FILKOM UB</li>
+      <li>Auditorium Algoritma · Gedung G Lt. 2</li>
+      <li>Mini Teater Heuristik · Gedung A Lt. 2</li>
+    </ul>
+    <h3>Durasi &amp; format</h3>
+    <ul>
+      <li>Durasi opsional. Kosong berarti 1 hari. Maksimal 7 hari.</li>
+      <li>Video MP4 · Full HD potret 1080 × 1920 px</li>
+      <li>Maksimal 45 detik · tanpa audio</li>
+    </ul>
+    <p>Pastikan konten sudah sesuai sebelum dikirim.</p>
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc-eu6-PfNfXGsUTqfbMP44Bq1j_Z0twZQRPSfmwUkxqDh97g/viewform" target="_blank" rel="noopener noreferrer">Buka Form Publikasi <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg><span class="hint"> (tab baru)</span></a></p>
+  </dialog>
+  <dialog id="dlg-terkirim" class="dialog dialog--tengah" aria-labelledby="dlg-terkirim-judul">
+    <p class="ikon-besar"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></p>
+    <h2 id="dlg-terkirim-judul">Pengajuan terkirim</h2>
+    <p>Pengajuan diteruskan untuk ditinjau. Pantau perkembangannya melalui Status peminjaman.</p>
+    <a class="btn btn--primary" href="dashboard.html">Ke Dashboard <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+  </dialog>
+  <dialog id="dlg-notifikasi" class="dialog" aria-labelledby="dlg-notifikasi-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-notifikasi-judul">Notifikasi</h2>
+    <ul class="list-plain">
+      <li><a class="notif-item" href="dashboard.html"><span><strong>Dokumen perlu direvisi</strong><br><span class="hint">Workshop Pemrograman · TV</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><a class="notif-item" href="dashboard.html"><span><strong>Pengajuan sedang diperiksa</strong><br><span class="hint">RABIR AF · SGE</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><a class="notif-item" href="dashboard.html"><span><strong>Publikasi disetujui</strong><br><span class="hint">Publikasi Poster</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+    </ul>
+  </dialog>
 
 </body>
 </html>
