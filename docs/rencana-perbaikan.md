@@ -59,7 +59,7 @@ Angka di bawah diambil langsung dari kode (`index.html`, `styles.css`, `app.js`)
 
 | # | Temuan | Prioritas |
 |---|--------|-----------|
-| F1 | 7 layar inti (Login, Dashboard, Prosedur, Pilihan Fasilitas, Ruangan, Peralatan, Publikasi), materi membatasi **5 layar inti**. Ruangan/Peralatan/Publikasi bisa jadi satu layar "Ajukan" dengan segmented control (3 opsi ≤ 5 → segmented, hukum Hick). **Perlu keputusanmu** — mungkin sudah disepakati di dokumen Tahap 1 kelompok. | Diskusi |
+| F1 | 7 layar inti (Login, Dashboard, Prosedur, Pilihan Fasilitas, Ruangan, Peralatan, Publikasi), materi membatasi **5 layar inti**. Ruangan/Peralatan/Publikasi bisa jadi satu layar "Ajukan" dengan segmented control (3 opsi ≤ 5 → segmented, hukum Hick). **Diputuskan:** frame 6 & 7 adalah status tab dari Layar 4, digabung ke `pinjam.html` → 5 layar inti. | Selesai |
 | F2 | Navigasi global sudah 3 item & kedalaman ≤2 level ✅. | — |
 | F3 | Dashboard Z-pattern sudah masuk akal (logo kiri atas, profil kanan atas, CTA di hero) ✅. | — |
 
@@ -80,8 +80,8 @@ FIRA/
 ├── index.html            # Login (Layar 1)
 ├── dashboard.html        # Layar 2
 ├── prosedur.html         # Layar 3
-├── pinjam.html           # Layar 4 (pilih fasilitas & jadwal)
-├── ajukan.html           # Layar 5–7 digabung? (tergantung keputusan F1)
+├── pinjam.html           # Layar 4: tab Ruangan / Peralatan / Publikasi (frame Figma 4, 6, 7)
+├── ajukan-ruangan.html   # Layar 5: form lanjutan ruangan
 ├── css/
 │   ├── tokens.css        # design tokens: primitive + semantic
 │   ├── base.css          # reset, tipografi, focus ring
@@ -151,5 +151,5 @@ Urutan: Login → Dashboard → Prosedur → Pinjam Fasilitas → Ajukan.
 ## 4. Yang perlu kamu putuskan
 
 1. **Setuju bangun ulang** (rekomendasi) atau tambal kode ekspor?
-2. **F1:** gabungkan layar Ruangan/Peralatan/Publikasi jadi satu layar "Ajukan" (5 layar inti), atau tetap 7 sesuai dokumen kelompok?
+2. ~~**F1:** gabungkan layar Ruangan/Peralatan/Publikasi?~~ Sudah: digabung sebagai tab di `pinjam.html`.
 3. **D3:** warna aksi utama — oranye (sesuai hero sekarang) atau navy/biru?
