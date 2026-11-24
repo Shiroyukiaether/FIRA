@@ -7,15 +7,17 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 
-  <header>
-    <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
+  <header class="site-header">
+    <a class="logo" href="dashboard.html" aria-label="FIRA, ke Dashboard">
+      <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="1" y="1" width="17" height="17" rx="4" fill="#002647"/><rect x="22" y="1" width="17" height="17" rx="4" fill="#ec831e"/><rect x="2" y="23" width="15" height="15" rx="4" fill="none" stroke="#ec831e" stroke-width="2"/><rect x="23" y="23" width="15" height="15" rx="4" fill="none" stroke="#002647" stroke-width="2"/></svg>
       <span>FIRA</span>
     </a>
 
-    <nav aria-label="Navigasi utama">
+    <nav class="nav-utama" aria-label="Navigasi utama">
       <ul>
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="prosedur.html" aria-current="page">Prosedur</a></li>
@@ -23,26 +25,26 @@
       </ul>
     </nav>
 
-    <button type="button" class="btn btn--secondary">Notifikasi</button>
+    <button type="button" class="btn btn--secondary notif">Notifikasi</button>
 
-    <div>
+    <div class="profil">
       <img src="assets/avatar.png" alt="" width="48" height="48">
       <p>Iqbal Fahmi</p>
       <p>NIM 255150200111024</p>
     </div>
   </header>
 
-  <main>
-    <section aria-labelledby="judul-prosedur">
+  <main class="container grid">
+    <section class="hero" aria-labelledby="judul-prosedur">
       <h1 id="judul-prosedur">Sebelum kamu mengajukan</h1>
       <p>Cek alur pengajuan dan siapkan dokumen sesuai fasilitas yang kamu pilih.</p>
-      <a class="btn btn--primary" href="pinjam.html">Pilih Fasilitas <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--on-dark" href="pinjam.html">Pilih Fasilitas <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
     </section>
 
     <!-- Alur peminjaman -->
-    <section aria-labelledby="judul-alur">
+    <section class="card" aria-labelledby="judul-alur">
       <h2 id="judul-alur">Alur peminjaman</h2>
-      <ol>
+      <ol class="langkah">
         <li>
           <h3>Pengajuan oleh peminjam</h3>
           <p>Isi formulir dan cantumkan tautan dokumen pendukung.</p>
@@ -63,9 +65,9 @@
     </section>
 
     <!-- Checklist dokumen -->
-    <section aria-labelledby="judul-checklist">
+    <section class="card col-6" aria-labelledby="judul-checklist">
       <h2 id="judul-checklist">Checklist dokumen</h2>
-      <ul>
+      <ul class="list-plain checklist">
         <li>
           <input type="checkbox" id="cek-surat" aria-describedby="bantu-surat">
           <label for="cek-surat">Surat peminjaman</label>
@@ -85,9 +87,9 @@
     </section>
 
     <!-- Peraturan per kategori -->
-    <section aria-labelledby="judul-peraturan">
+    <section class="card col-6" aria-labelledby="judul-peraturan">
       <h2 id="judul-peraturan">Peraturan per kategori</h2>
-      <ul>
+      <ul class="list-plain checklist">
         <li>
           <button type="button" class="btn btn--secondary" aria-haspopup="dialog" aria-describedby="ringkas-ruangan">Ruangan</button>
           <p id="ringkas-ruangan">Ajukan setidaknya H-14 bila memungkinkan.</p>

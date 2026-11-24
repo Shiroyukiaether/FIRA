@@ -7,30 +7,34 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 
   <!-- Header -->
-  <header>
-    <span>FIRA</span>
+  <header class="site-header">
+    <span class="logo">
+      <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="1" y="1" width="17" height="17" rx="4" fill="#002647"/><rect x="22" y="1" width="17" height="17" rx="4" fill="#ec831e"/><rect x="2" y="23" width="15" height="15" rx="4" fill="none" stroke="#ec831e" stroke-width="2"/><rect x="23" y="23" width="15" height="15" rx="4" fill="none" stroke="#002647" stroke-width="2"/></svg>
+      <span>FIRA</span>
+    </span>
   </header>
 
-  <main>
+  <main class="container grid login">
     <!-- Identitas aplikasi -->
-    <section aria-labelledby="judul-aplikasi">
+    <section class="hero col-6" aria-labelledby="judul-aplikasi">
       <h1 id="judul-aplikasi">FIRA</h1>
       <p>FILKOM Integrated Resource Access</p>
       <p>So Easy, It Just Needs a Tap</p>
     </section>
 
     <!-- Panel masuk -->
-    <section aria-labelledby="judul-masuk">
+    <section class="card col-6" aria-labelledby="judul-masuk">
       <h2 id="judul-masuk">Masuk dengan akun UB</h2>
       <a class="btn btn--primary" href="dashboard.html">SSO Universitas Brawijaya</a>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>Butuh bantuan? · Kontak admin peminjaman</p>
   </footer>
 

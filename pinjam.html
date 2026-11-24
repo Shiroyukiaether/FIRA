@@ -7,16 +7,18 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 
   <!-- Header -->
-  <header>
-    <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
+  <header class="site-header">
+    <a class="logo" href="dashboard.html" aria-label="FIRA, ke Dashboard">
+      <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="1" y="1" width="17" height="17" rx="4" fill="#002647"/><rect x="22" y="1" width="17" height="17" rx="4" fill="#ec831e"/><rect x="2" y="23" width="15" height="15" rx="4" fill="none" stroke="#ec831e" stroke-width="2"/><rect x="23" y="23" width="15" height="15" rx="4" fill="none" stroke="#002647" stroke-width="2"/></svg>
       <span>FIRA</span>
     </a>
 
-    <nav aria-label="Navigasi utama">
+    <nav class="nav-utama" aria-label="Navigasi utama">
       <ul>
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="prosedur.html">Prosedur</a></li>
@@ -24,20 +26,20 @@
       </ul>
     </nav>
 
-    <button type="button" class="btn btn--secondary">Notifikasi</button>
+    <button type="button" class="btn btn--secondary notif">Notifikasi</button>
 
-    <div>
+    <div class="profil">
       <img src="assets/avatar.png" alt="" width="48" height="48">
       <p>Iqbal Fahmi</p>
       <p>NIM 255150200111024</p>
     </div>
   </header>
 
-  <main>
+  <main class="container">
     <h1>Pilihan Fasilitas dan Jadwal</h1>
 
     <!-- Kategori (nanti jadi tab lewat JS) -->
-    <nav aria-label="Kategori fasilitas">
+    <nav class="segmen" aria-label="Kategori fasilitas">
       <ul>
         <li><a href="#ruangan">Ruangan</a></li>
         <li><a href="#peralatan">Peralatan</a></li>
@@ -46,12 +48,12 @@
     </nav>
 
     <!-- Panel Ruangan -->
-    <section id="ruangan" aria-labelledby="judul-ruangan">
+    <section id="ruangan" class="panel grid" aria-labelledby="judul-ruangan">
       <h2 id="judul-ruangan">Ruangan</h2>
 
       <button type="button" class="btn btn--secondary" aria-haspopup="dialog">Lihat Daftar Ruangan</button>
 
-      <section aria-labelledby="judul-kalender">
+      <section class="card kalender col-6" aria-labelledby="judul-kalender">
         <h3 id="judul-kalender">Kalender Kegiatan</h3>
         <p class="hint" id="petunjuk-tanggal">Pilih tanggal bertanda panah.</p>
 
@@ -73,17 +75,17 @@
             <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
             <tr>
               <td>9</td><td>10</td>
-              <td><button type="button" aria-label="Pilih 11 November">11 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
+              <td><button type="button" class="hari hari--ruangan" aria-label="Pilih 11 November">11 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>12</td><td>13</td><td>14</td><td>15</td>
             </tr>
             <tr>
               <td>16</td><td>17</td><td>18</td>
-              <td><button type="button" aria-label="Pilih 19 November">19 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
+              <td><button type="button" class="hari hari--ruangan" aria-label="Pilih 19 November">19 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>20</td><td>21</td><td>22</td>
             </tr>
             <tr>
               <td>23</td><td>24</td>
-              <td><button type="button" aria-label="Pilih 25 November">25 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
+              <td><button type="button" class="hari hari--ruangan" aria-label="Pilih 25 November">25 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>26</td><td>27</td><td>28</td><td>29</td>
             </tr>
             <tr><td>30</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -91,10 +93,10 @@
         </table>
       </section>
 
-      <section aria-labelledby="judul-agenda">
+      <section class="card col-6" aria-labelledby="judul-agenda">
         <h3 id="judul-agenda">Agenda Tanggal Terpilih</h3>
-        <p><time datetime="2026-11-11">Rabu, 11 November 2026</time> · 2 agenda</p>
-        <ul>
+        <p class="hint"><time datetime="2026-11-11">Rabu, 11 November 2026</time> · 2 agenda</p>
+        <ul class="list-plain checklist">
           <li>
             <h4>RAION EXHIBITION</h4>
             <p><time datetime="2026-11-11T08:00">08.00–16.00 WIB</time> · GKM Lt 1 Open Space</p>
@@ -115,14 +117,14 @@
     </section>
 
     <!-- Panel Peralatan -->
-    <section id="peralatan" aria-labelledby="judul-peralatan">
+    <section id="peralatan" class="panel grid" aria-labelledby="judul-peralatan">
       <h2 id="judul-peralatan">Peralatan</h2>
 
-      <form id="form-peralatan" novalidate>
+      <form id="form-peralatan" class="card col-8" novalidate>
         <h3>Detail peminjaman</h3>
         <p>Tambahkan peralatan dan isi jumlahnya untuk satu periode peminjaman.</p>
 
-        <section aria-labelledby="judul-alat-kegiatan">
+        <section class="ringkasan" aria-labelledby="judul-alat-kegiatan">
           <h4 id="judul-alat-kegiatan">Kegiatan &amp; dokumen</h4>
           <dl>
             <dt>Agenda</dt>
@@ -138,7 +140,7 @@
           <legend>Peralatan yang dipinjam</legend>
           <button type="button" class="btn btn--secondary" aria-haspopup="dialog"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg> Tambah alat</button>
           <p id="alat-kosong">Belum ada peralatan. Pilih Tambah alat.</p>
-          <ul id="daftar-alat"></ul>
+          <ul id="daftar-alat" class="list-plain checklist"></ul>
         </fieldset>
 
         <!-- Baris alat (diisi JS) -->
@@ -168,7 +170,7 @@
         </fieldset>
       </form>
 
-      <aside aria-labelledby="judul-alat-ringkasan">
+      <aside class="card ringkasan col-4" aria-labelledby="judul-alat-ringkasan">
         <h3 id="judul-alat-ringkasan">Ringkasan pengajuan</h3>
         <dl>
           <dt>Peralatan dan jumlah</dt>
@@ -185,10 +187,10 @@
     </section>
 
     <!-- Panel Publikasi -->
-    <section id="publikasi" aria-labelledby="judul-publikasi">
+    <section id="publikasi" class="panel grid" aria-labelledby="judul-publikasi">
       <h2 id="judul-publikasi">Publikasi</h2>
 
-      <form id="form-publikasi" novalidate>
+      <form id="form-publikasi" class="card col-8" novalidate>
         <fieldset>
           <legend>Detail penayangan</legend>
           <p>Pilih lokasi dan periode penayangan konten FILKOM.</p>
@@ -208,7 +210,7 @@
           </select>
         </fieldset>
 
-        <section aria-labelledby="judul-pub-pengaju">
+        <section class="ringkasan" aria-labelledby="judul-pub-pengaju">
           <h3 id="judul-pub-pengaju">Pengaju &amp; konten</h3>
           <dl>
             <dt>Kegiatan · unit kerja</dt>
@@ -221,7 +223,7 @@
         </section>
       </form>
 
-      <aside aria-labelledby="judul-pub-ringkasan">
+      <aside class="card ringkasan col-4" aria-labelledby="judul-pub-ringkasan">
         <h3 id="judul-pub-ringkasan">Ringkasan pengajuan</h3>
         <dl>
           <dt>Lokasi signage</dt>

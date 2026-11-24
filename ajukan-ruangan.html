@@ -7,27 +7,30 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 
   <!-- Header -->
-  <header>
-    <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
+  <header class="site-header">
+    <a class="logo" href="dashboard.html" aria-label="FIRA, ke Dashboard">
+      <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect x="1" y="1" width="17" height="17" rx="4" fill="#002647"/><rect x="22" y="1" width="17" height="17" rx="4" fill="#ec831e"/><rect x="2" y="23" width="15" height="15" rx="4" fill="none" stroke="#ec831e" stroke-width="2"/><rect x="23" y="23" width="15" height="15" rx="4" fill="none" stroke="#002647" stroke-width="2"/></svg>
       <span>FIRA</span>
     </a>
 
-    <div>
+    <div class="profil">
       <img src="assets/avatar.png" alt="" width="48" height="48">
       <p>Iqbal Fahmi</p>
       <p>NIM 255150200111024</p>
     </div>
   </header>
 
-  <main>
+  <div class="container grid">
+  <main class="col-8">
     <h1>Ajukan Peminjaman Ruangan</h1>
 
     <!-- Formulir -->
-    <form id="form-ajukan" novalidate>
+    <form id="form-ajukan" class="card" novalidate>
 
       <fieldset>
         <legend>Jenis Pengaju</legend>
@@ -84,13 +87,15 @@
       <p><span aria-hidden="true">*</span> wajib diisi</p>
 
       <!-- Aksi -->
+      <div class="aksi">
       <a class="btn btn--secondary" href="pinjam.html#ruangan">Kembali</a>
       <button type="submit" class="btn btn--primary">Ajukan Peminjaman</button>
+      </div>
     </form>
   </main>
 
   <!-- Ringkasan -->
-  <aside aria-labelledby="judul-ringkasan">
+  <aside class="card ringkasan col-4" aria-labelledby="judul-ringkasan">
     <h2 id="judul-ringkasan">Ringkasan peminjaman</h2>
     <dl>
       <dt>Pengaju</dt>
@@ -105,6 +110,7 @@
     <p>Ajukan minimal H-14 sebelum tanggal peminjaman. Pengajuan di luar jam operasional akan ditolak.</p>
     <a href="prosedur.html">Lihat semua ketentuan <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
   </aside>
+  </div>
 
 </body>
 </html>

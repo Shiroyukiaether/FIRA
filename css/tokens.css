@@ -6,6 +6,7 @@
   --navy-900: #002647;
   --navy-800: #102943;
   --navy-700: #1e4a7a;
+  --navy-600: #154f7e;
   --slate-600: #51657b;
   --slate-400: #7a8ca3;
   --slate-200: #dce6ef;
@@ -43,6 +44,7 @@
   --color-action-primary-hover: var(--navy-700);
   --color-action-on-dark: var(--orange-300);
   --color-accent: var(--orange-500);
+  --color-bg-hero: linear-gradient(90deg, var(--navy-900), var(--navy-600));
   --color-focus-ring: var(--blue-400);
 
   /* Status */
@@ -78,12 +80,14 @@
   --text-h3: 1.25rem;        /* 20px */
   --text-h2: 1.5rem;         /* 24px */
   --text-h1: 2rem;           /* 32px */
+  --text-display: 4rem;      /* 64px, judul login */
 
   --leading-caption: 1rem;   /* 16px */
   --leading-body: 1.5rem;    /* 24px */
   --leading-h3: 1.75rem;     /* 28px */
   --leading-h2: 2rem;        /* 32px */
   --leading-h1: 2.5rem;      /* 40px */
+  --leading-display: 4.5rem; /* 72px */
 
   --weight-regular: 400;
   --weight-medium: 500;
@@ -96,6 +100,11 @@
   --radius-lg: 24px;
   --radius-pill: 999px;
   --shadow-card: 0 4px 16px rgba(0, 38, 71, 0.08);
+
+  /* ---------- Layout ---------- */
+  --container-max: 75rem;    /* 1200px */
+  --gutter: var(--space-6);  /* 24px desktop */
+  --page-margin: var(--space-4);
 
   /* ---------- Interaksi ---------- */
   --size-target: 3rem;       /* 48px, Fitts */
