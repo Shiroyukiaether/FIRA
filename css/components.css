@@ -147,6 +147,17 @@ textarea {
   transition: border-color var(--duration-fast);
 }
 
+/* Placeholder: teks lebih pudar dari isian */
+::placeholder,
+select:has(option[value=""]:checked) {
+  color: var(--color-text-placeholder);
+  opacity: 1;
+}
+
+select option {
+  color: var(--color-text);
+}
+
 input:not([type="checkbox"], [type="radio"]):hover,
 select:hover {
   border-color: var(--color-text-muted);

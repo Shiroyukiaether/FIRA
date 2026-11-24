@@ -11,6 +11,7 @@ PAIRS = [
     ("--color-text", "--color-bg-surface", 4.5),
     ("--color-text-muted", "--color-bg-page", 4.5),
     ("--color-text-muted", "--color-bg-surface", 4.5),
+    ("--color-text-placeholder", "--color-bg-surface", 4.5),
     ("--color-text-on-action", "--color-action-primary", 4.5),
     ("--color-text-on-action", "--color-action-primary-hover", 4.5),
     ("--color-action-primary", "--color-action-on-dark", 4.5),
