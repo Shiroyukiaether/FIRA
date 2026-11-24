@@ -6,6 +6,7 @@
   <title>Prosedur · FIRA</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
 
@@ -22,7 +23,7 @@
       </ul>
     </nav>
 
-    <button type="button">Notifikasi</button>
+    <button type="button" class="btn btn--secondary">Notifikasi</button>
 
     <div>
       <img src="assets/avatar.png" alt="" width="48" height="48">
@@ -35,7 +36,7 @@
     <section aria-labelledby="judul-prosedur">
       <h1 id="judul-prosedur">Sebelum kamu mengajukan</h1>
       <p>Cek alur pengajuan dan siapkan dokumen sesuai fasilitas yang kamu pilih.</p>
-      <a href="pinjam.html">Pilih Fasilitas <span aria-hidden="true">→</span></a>
+      <a class="btn btn--primary" href="pinjam.html">Pilih Fasilitas <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
     </section>
 
     <!-- Alur peminjaman -->
@@ -68,17 +69,17 @@
         <li>
           <input type="checkbox" id="cek-surat" aria-describedby="bantu-surat">
           <label for="cek-surat">Surat peminjaman</label>
-          <p id="bantu-surat">Pastikan tanda tangan yang diperlukan sudah lengkap.</p>
+          <p class="hint" id="bantu-surat">Pastikan tanda tangan yang diperlukan sudah lengkap.</p>
         </li>
         <li>
           <input type="checkbox" id="cek-drive" aria-describedby="bantu-drive">
           <label for="cek-drive">Tautan Google Drive</label>
-          <p id="bantu-drive">Berikan akses Editor pada dokumen untuk email UB.</p>
+          <p class="hint" id="bantu-drive">Berikan akses Editor pada dokumen untuk email UB.</p>
         </li>
         <li>
           <input type="checkbox" id="cek-pendukung" aria-describedby="bantu-pendukung">
           <label for="cek-pendukung">Dokumen pendukung</label>
-          <p id="bantu-pendukung">Siapkan lampiran yang relevan dengan kegiatanmu.</p>
+          <p class="hint" id="bantu-pendukung">Siapkan lampiran yang relevan dengan kegiatanmu.</p>
         </li>
       </ul>
     </section>
@@ -88,15 +89,15 @@
       <h2 id="judul-peraturan">Peraturan per kategori</h2>
       <ul>
         <li>
-          <button type="button" aria-haspopup="dialog" aria-describedby="ringkas-ruangan">Ruangan</button>
+          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" aria-describedby="ringkas-ruangan">Ruangan</button>
           <p id="ringkas-ruangan">Ajukan setidaknya H-14 bila memungkinkan.</p>
         </li>
         <li>
-          <button type="button" aria-haspopup="dialog" aria-describedby="ringkas-peralatan">Peralatan</button>
+          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" aria-describedby="ringkas-peralatan">Peralatan</button>
           <p id="ringkas-peralatan">Cek stok selama rentang tanggal pinjam.</p>
         </li>
         <li>
-          <button type="button" aria-haspopup="dialog" aria-describedby="ringkas-publikasi">Publikasi</button>
+          <button type="button" class="btn btn--secondary" aria-haspopup="dialog" aria-describedby="ringkas-publikasi">Publikasi</button>
           <p id="ringkas-publikasi">Cek format video dan lokasi signage.</p>
         </li>
       </ul>

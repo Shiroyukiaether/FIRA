@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Komponen · FIRA</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <style>
+    /* Khusus halaman etalase */
+    main { max-width: 60rem; margin: 0 auto; padding: var(--space-8) var(--space-4); }
+    section { margin-bottom: var(--space-12); }
+    .baris { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; margin-bottom: var(--space-4); }
+    .gelap { padding: var(--space-6); border-radius: var(--radius-lg); background: var(--color-action-primary); }
+    .swatch { width: 7rem; padding: var(--space-2); border-radius: var(--radius-sm); font-size: var(--text-caption); line-height: var(--leading-caption); }
+    form { max-width: 28rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Etalase komponen FIRA</h1>
+    <p>Semua komponen dari <code>css/components.css</code>. Coba Tab untuk melihat fokus.</p>
+
+    <!-- Warna -->
+    <section aria-labelledby="judul-warna">
+      <h2 id="judul-warna">Warna</h2>
+      <div class="baris">
+        <div class="swatch" style="background: var(--color-bg-page)">bg-page</div>
+        <div class="swatch" style="background: var(--color-bg-surface); border: 1px solid var(--color-border-subtle)">bg-surface</div>
+        <div class="swatch" style="background: var(--color-action-primary); color: var(--color-text-on-action)">action-primary</div>
+        <div class="swatch" style="background: var(--color-action-on-dark)">action-on-dark</div>
+        <div class="swatch" style="background: var(--color-accent)">accent</div>
+        <div class="swatch" style="background: var(--color-text-muted); color: var(--color-text-on-action)">text-muted</div>
+      </div>
+    </section>
+
+    <!-- Tipografi -->
+    <section aria-labelledby="judul-tipografi">
+      <h2 id="judul-tipografi">Tipografi</h2>
+      <p style="font-size: var(--text-h1); line-height: var(--leading-h1)">H1 · 32/40</p>
+      <p style="font-size: var(--text-h2); line-height: var(--leading-h2)">H2 · 24/32</p>
+      <p style="font-size: var(--text-h3); line-height: var(--leading-h3)">H3 · 20/28</p>
+      <p>Body · 16/24</p>
+      <p><small>Caption · 12/16</small></p>
+    </section>
+
+    <!-- Tombol -->
+    <section aria-labelledby="judul-tombol">
+      <h2 id="judul-tombol">Tombol</h2>
+      <div class="baris">
+        <button type="button" class="btn btn--primary">Primary</button>
+        <button type="button" class="btn btn--secondary">Secondary</button>
+        <button type="button" class="btn btn--secondary btn--sm">Kecil</button>
+        <button type="button" class="btn btn--primary" disabled>Disabled</button>
+        <button type="button" class="btn btn--primary" aria-busy="true" disabled>Mengirim…</button>
+      </div>
+      <div class="baris gelap">
+        <button type="button" class="btn btn--on-dark">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg>
+          Di atas latar gelap
+        </button>
+      </div>
+    </section>
+
+    <!-- Badge -->
+    <section aria-labelledby="judul-badge">
+      <h2 id="judul-badge">Badge status</h2>
+      <div class="baris">
+        <p class="badge badge--warning"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Menunggu verifikasi BEM</p>
+        <p class="badge badge--danger"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg> Perlu revisi</p>
+        <p class="badge badge--success"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Disetujui</p>
+      </div>
+    </section>
+
+    <!-- Field -->
+    <section aria-labelledby="judul-field">
+      <h2 id="judul-field">Field</h2>
+      <form>
+        <fieldset>
+          <legend>Jenis Pengaju</legend>
+          <input type="radio" id="contoh-individu" name="contoh-jenis">
+          <label for="contoh-individu">Individu</label>
+          <input type="radio" id="contoh-lembaga" name="contoh-jenis" checked>
+          <label for="contoh-lembaga">Lembaga</label>
+        </fieldset>
+
+        <label for="contoh-kontak">Kontak (ID LINE / Nomor HP)</label>
+        <input type="text" id="contoh-kontak" aria-describedby="contoh-bantu" placeholder="Masukkan ID LINE atau nomor HP">
+        <p class="hint" id="contoh-bantu">Contoh helper text.</p>
+
+        <label for="contoh-jumlah">Jumlah</label>
+        <input type="number" id="contoh-jumlah" value="9" aria-invalid="true" aria-describedby="contoh-error">
+        <p class="error" id="contoh-error">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg>
+          Jumlah barang yang dipinjam melebihi ketersediaan.
+        </p>
+
+        <label for="contoh-pilih">Lembaga</label>
+        <select id="contoh-pilih"><option>HMDTIF</option></select>
+
+        <label for="contoh-mati">Disabled</label>
+        <input type="text" id="contoh-mati" value="Tidak bisa diubah" disabled>
+
+        <input type="checkbox" id="contoh-cek">
+        <label for="contoh-cek">Checkbox</label>
+      </form>
+    </section>
+
+    <!-- Kartu -->
+    <section aria-labelledby="judul-kartu">
+      <h2 id="judul-kartu">Kartu</h2>
+      <article class="card" aria-labelledby="contoh-kartu">
+        <h3 id="contoh-kartu">RABIR AF</h3>
+        <p>SGE · Ruang GKM 3.1 · 19 November 2026 · 17.00–20.00 WIB</p>
+        <button type="button" class="btn btn--secondary">Lihat Detail</button>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

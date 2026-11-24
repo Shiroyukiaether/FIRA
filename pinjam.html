@@ -6,6 +6,7 @@
   <title>Pinjam Fasilitas · FIRA</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
 
@@ -23,7 +24,7 @@
       </ul>
     </nav>
 
-    <button type="button">Notifikasi</button>
+    <button type="button" class="btn btn--secondary">Notifikasi</button>
 
     <div>
       <img src="assets/avatar.png" alt="" width="48" height="48">
@@ -48,11 +49,11 @@
     <section id="ruangan" aria-labelledby="judul-ruangan">
       <h2 id="judul-ruangan">Ruangan</h2>
 
-      <button type="button" aria-haspopup="dialog">Lihat Daftar Ruangan</button>
+      <button type="button" class="btn btn--secondary" aria-haspopup="dialog">Lihat Daftar Ruangan</button>
 
       <section aria-labelledby="judul-kalender">
         <h3 id="judul-kalender">Kalender Kegiatan</h3>
-        <p id="petunjuk-tanggal">Pilih tanggal bertanda panah.</p>
+        <p class="hint" id="petunjuk-tanggal">Pilih tanggal bertanda panah.</p>
 
         <table aria-describedby="petunjuk-tanggal">
           <caption>November 2026</caption>
@@ -72,17 +73,17 @@
             <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
             <tr>
               <td>9</td><td>10</td>
-              <td><button type="button" aria-label="Pilih 11 November">11 <span aria-hidden="true">→</span></button></td>
+              <td><button type="button" aria-label="Pilih 11 November">11 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>12</td><td>13</td><td>14</td><td>15</td>
             </tr>
             <tr>
               <td>16</td><td>17</td><td>18</td>
-              <td><button type="button" aria-label="Pilih 19 November">19 <span aria-hidden="true">→</span></button></td>
+              <td><button type="button" aria-label="Pilih 19 November">19 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>20</td><td>21</td><td>22</td>
             </tr>
             <tr>
               <td>23</td><td>24</td>
-              <td><button type="button" aria-label="Pilih 25 November">25 <span aria-hidden="true">→</span></button></td>
+              <td><button type="button" aria-label="Pilih 25 November">25 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button></td>
               <td>26</td><td>27</td><td>28</td><td>29</td>
             </tr>
             <tr><td>30</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -107,10 +108,10 @@
         </ul>
       </section>
 
-      <button type="button" aria-haspopup="dialog" aria-describedby="petunjuk-slot">
-        Pilih Ruang dan Slot <span aria-hidden="true">→</span>
+      <button type="button" class="btn btn--primary" aria-haspopup="dialog" aria-describedby="petunjuk-slot">
+        Pilih Ruang dan Slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
       </button>
-      <p id="petunjuk-slot">Pilih tanggal bertanda panah untuk melihat ruang dan jadwal.</p>
+      <p class="hint" id="petunjuk-slot">Pilih tanggal bertanda panah untuk melihat ruang dan jadwal.</p>
     </section>
 
     <!-- Panel Peralatan -->
@@ -135,7 +136,7 @@
 
         <fieldset>
           <legend>Peralatan yang dipinjam</legend>
-          <button type="button" aria-haspopup="dialog">+ Tambah alat</button>
+          <button type="button" class="btn btn--secondary" aria-haspopup="dialog"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg> Tambah alat</button>
           <p id="alat-kosong">Belum ada peralatan. Pilih Tambah alat.</p>
           <ul id="daftar-alat"></ul>
         </fieldset>
@@ -144,12 +145,12 @@
         <template id="baris-alat">
           <li>
             <label for="jumlah-tv">TV</label>
-            <p id="stok-tv">Tersedia 5 unit</p>
+            <p class="hint" id="stok-tv">Tersedia 5 unit</p>
             <input type="number" id="jumlah-tv" name="jumlah-tv" min="1" max="5" inputmode="numeric"
                    aria-describedby="stok-tv error-tv">
             <span>unit</span>
-            <button type="button" aria-label="Hapus TV">Hapus</button>
-            <p id="error-tv" hidden>Jumlah barang yang dipinjam melebihi ketersediaan.</p>
+            <button type="button" class="btn btn--secondary btn--sm" aria-label="Hapus TV">Hapus</button>
+            <p class="error" id="error-tv" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg> Jumlah barang yang dipinjam melebihi ketersediaan.</p>
           </li>
         </template>
 
@@ -163,7 +164,7 @@
           <label for="tgl-kembali">Tanggal pengembalian</label>
           <input type="date" id="tgl-kembali" name="tgl-kembali" min="2026-11-01" max="2027-10-31"
                  value="2026-11-26" required aria-describedby="error-tanggal">
-          <p id="error-tanggal" hidden>Tanggal pengembalian harus sama atau sesudah tanggal pengambilan.</p>
+          <p class="error" id="error-tanggal" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.5h.01"/></svg> Tanggal pengembalian harus sama atau sesudah tanggal pengambilan.</p>
         </fieldset>
       </form>
 
@@ -178,8 +179,8 @@
           <dd><output for="tgl-kembali">26 Nov 2026</output></dd>
         </dl>
         <p>Cek kelengkapan alat saat serah terima.</p>
-        <button type="button" aria-haspopup="dialog">Lihat ketentuan</button>
-        <button type="submit" form="form-peralatan">Tinjau pengajuan</button>
+        <button type="button" class="btn btn--secondary" aria-haspopup="dialog">Lihat ketentuan</button>
+        <button type="submit" class="btn btn--primary" form="form-peralatan">Tinjau pengajuan</button>
       </aside>
     </section>
 
@@ -231,8 +232,8 @@
           <dd><output for="durasi">1 hari</output></dd>
         </dl>
         <p>Video MP4 potret 1080 × 1920 px, maksimal 45 detik, tanpa audio.</p>
-        <button type="button" aria-haspopup="dialog">Lihat ketentuan</button>
-        <button type="submit" form="form-publikasi">Tinjau pengajuan</button>
+        <button type="button" class="btn btn--secondary" aria-haspopup="dialog">Lihat ketentuan</button>
+        <button type="submit" class="btn btn--primary" form="form-publikasi">Tinjau pengajuan</button>
       </aside>
     </section>
   </main>

@@ -6,6 +6,7 @@
   <title>Ajukan Peminjaman Ruangan · FIRA</title>
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
 
@@ -77,14 +78,14 @@
         <label for="dokumen">Link Dokumen (Google Drive)</label>
         <input type="url" id="dokumen" name="dokumen" aria-describedby="bantu-dokumen"
                placeholder="https://drive.google.com/…">
-        <p id="bantu-dokumen">Berikan akses Editor pada dokumen untuk email UB.</p>
+        <p class="hint" id="bantu-dokumen">Berikan akses Editor pada dokumen untuk email UB.</p>
       </fieldset>
 
       <p><span aria-hidden="true">*</span> wajib diisi</p>
 
       <!-- Aksi -->
-      <a href="pinjam.html#ruangan">Kembali</a>
-      <button type="submit">Ajukan Peminjaman</button>
+      <a class="btn btn--secondary" href="pinjam.html#ruangan">Kembali</a>
+      <button type="submit" class="btn btn--primary">Ajukan Peminjaman</button>
     </form>
   </main>
 
@@ -102,7 +103,7 @@
     <a href="pinjam.html#ruangan">Ubah ruang &amp; jadwal</a>
 
     <p>Ajukan minimal H-14 sebelum tanggal peminjaman. Pengajuan di luar jam operasional akan ditolak.</p>
-    <a href="prosedur.html">Lihat semua ketentuan <span aria-hidden="true">→</span></a>
+    <a href="prosedur.html">Lihat semua ketentuan <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
   </aside>
 
 </body>
