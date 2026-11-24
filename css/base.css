@@ -1,0 +1,80 @@
+/* Dasar: font, reset, tipografi, fokus */
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/InterVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg-page);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* Tipografi */
+h1, h2, h3, h4 {
+  margin: 0 0 var(--space-2);
+  font-weight: var(--weight-semibold);
+}
+
+h1 { font-size: var(--text-h1); line-height: var(--leading-h1); }
+h2 { font-size: var(--text-h2); line-height: var(--leading-h2); }
+h3 { font-size: var(--text-h3); line-height: var(--leading-h3); }
+h4 { font-size: var(--text-body); line-height: var(--leading-body); }
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+small,
+caption {
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+}
+
+a {
+  color: var(--color-action-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form mewarisi font halaman */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Fokus keyboard */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* Gerak minimal */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -152,4 +152,4 @@ Urutan: Login → Dashboard → Prosedur → Pinjam Fasilitas → Ajukan.
 
 1. **Setuju bangun ulang** (rekomendasi) atau tambal kode ekspor?
 2. ~~**F1:** gabungkan layar Ruangan/Peralatan/Publikasi?~~ Sudah: digabung sebagai tab di `pinjam.html`.
-3. **D3:** warna aksi utama — oranye (sesuai hero sekarang) atau navy/biru?
+3. ~~**D3:** warna aksi utama?~~ Sudah: navy `#002647` untuk tombol aksi (sesuai tombol SSO, Tinjau, Ajukan di Figma); oranye hanya aksen (logo, tab aktif) dan CTA di atas latar gelap. Kontras dicek dengan `python3 tools/cek-kontras.py`.

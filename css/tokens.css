@@ -1,0 +1,106 @@
+/* Design tokens FIRA */
+
+:root {
+  /* ---------- Primitive: warna ---------- */
+  --white: #ffffff;
+  --navy-900: #002647;
+  --navy-800: #102943;
+  --navy-700: #1e4a7a;
+  --slate-600: #51657b;
+  --slate-400: #7a8ca3;
+  --slate-200: #dce6ef;
+  --slate-100: #f2f7fc;
+  --slate-50: #f5f8fc;
+  --orange-300: #ffa447;
+  --orange-500: #ec831e;
+  --blue-400: #298bd1;
+  --blue-800: #1e40af;
+  --blue-50: #e1f2ff;
+  --purple-800: #513990;
+  --purple-50: #f0ebff;
+  --green-800: #216043;
+  --green-50: #e9f6ef;
+  --amber-800: #884209;
+  --amber-50: #fff5e9;
+  --red-800: #9e3228;
+  --red-50: #fdede9;
+
+  /* ---------- Semantic: warna ---------- */
+  /* 60% permukaan */
+  --color-bg-page: var(--slate-100);
+  --color-bg-surface: var(--white);
+  --color-bg-subtle: var(--slate-50);
+
+  /* 30% teks & struktur */
+  --color-text: var(--navy-800);
+  --color-text-muted: var(--slate-600);
+  --color-text-on-action: var(--white);
+  --color-border-subtle: var(--slate-200);
+  --color-border-control: var(--slate-400);
+
+  /* 10% aksi & aksen */
+  --color-action-primary: var(--navy-900);
+  --color-action-primary-hover: var(--navy-700);
+  --color-action-on-dark: var(--orange-300);
+  --color-accent: var(--orange-500);
+  --color-focus-ring: var(--blue-400);
+
+  /* Status */
+  --color-status-warning: var(--amber-800);
+  --color-status-warning-bg: var(--amber-50);
+  --color-status-danger: var(--red-800);
+  --color-status-danger-bg: var(--red-50);
+  --color-status-success: var(--green-800);
+  --color-status-success-bg: var(--green-50);
+
+  /* Kategori fasilitas */
+  --color-cat-ruangan: var(--blue-800);
+  --color-cat-ruangan-bg: var(--blue-50);
+  --color-cat-peralatan: var(--purple-800);
+  --color-cat-peralatan-bg: var(--purple-50);
+  --color-cat-publikasi: var(--green-800);
+  --color-cat-publikasi-bg: var(--green-50);
+
+  /* ---------- Spasi (8-point) ---------- */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-4: 1rem;     /* 16px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-12: 3rem;    /* 48px */
+
+  /* ---------- Tipografi (Major Third 1,25) ---------- */
+  --font-sans: "Inter", Arial, sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", Consolas, monospace;
+
+  --text-caption: 0.75rem;   /* 12px */
+  --text-body: 1rem;         /* 16px */
+  --text-h3: 1.25rem;        /* 20px */
+  --text-h2: 1.5rem;         /* 24px */
+  --text-h1: 2rem;           /* 32px */
+
+  --leading-caption: 1rem;   /* 16px */
+  --leading-body: 1.5rem;    /* 24px */
+  --leading-h3: 1.75rem;     /* 28px */
+  --leading-h2: 2rem;        /* 32px */
+  --leading-h1: 2.5rem;      /* 40px */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---------- Bentuk ---------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow-card: 0 4px 16px rgba(0, 38, 71, 0.08);
+
+  /* ---------- Interaksi ---------- */
+  --size-target: 3rem;       /* 48px, Fitts */
+  --focus-ring: 2px solid var(--color-focus-ring);
+  --focus-offset: 2px;
+  --duration-fast: 100ms;
+  --duration-base: 200ms;
+}
