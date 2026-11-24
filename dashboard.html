@@ -4,17 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard · FIRA</title>
-  <!-- Sengaja belum ada CSS: tahap ini hanya struktur semantik (setara wireframe lo-fi, IMK 05). -->
 </head>
 <body>
 
-  <!-- ZONA ATAS: identitas aplikasi + status sesi pengguna -->
+  <!-- Header -->
   <header>
     <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
       <span>FIRA</span>
     </a>
 
-    <!-- NAVIGASI GLOBAL: hanya 3 menu, kedalaman 1 level -->
+    <!-- Navigasi utama -->
     <nav aria-label="Navigasi utama">
       <ul>
         <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
@@ -32,10 +31,10 @@
     </div>
   </header>
 
-  <!-- WILAYAH KERJA UTAMA -->
+  <!-- Konten utama -->
   <main>
 
-    <!-- Hero: titik awal Z-pattern, berisi CTA utama -->
+    <!-- Hero -->
     <section aria-labelledby="sapaan">
       <h1 id="sapaan">Halo, Iqbal Fahmi</h1>
       <p>Ajukan kebutuhan kegiatanmu dan pantau perkembangannya di sini.</p>
@@ -43,7 +42,7 @@
       <a href="prosedur.html">Lihat Prosedur <span aria-hidden="true">→</span></a>
     </section>
 
-    <!-- Daftar status: tiap pengajuan = satu <article> mandiri -->
+    <!-- Status peminjaman -->
     <section aria-labelledby="judul-status">
       <h2 id="judul-status">Status peminjaman</h2>
       <p>Gulir daftar untuk melihat semua pengajuan.</p>
@@ -105,11 +104,10 @@
     </section>
   </main>
 
-  <!-- WILAYAH SAMPING: informasi pendukung, bukan tugas utama -->
+  <!-- Kalender -->
   <aside aria-labelledby="judul-kalender">
     <h2 id="judul-kalender">Kalender aktivitas</h2>
 
-    <!-- Kalender = data tabular (hari × minggu), jadi <table> memang tepat di sini -->
     <table>
       <caption>November 2026</caption>
       <thead>
@@ -142,7 +140,7 @@
       </tbody>
     </table>
 
-    <!-- Legenda warna kalender: teks eksplisit, bukan warna saja (WCAG 1.4.1) -->
+    <!-- Legenda -->
     <ul aria-label="Keterangan kalender">
       <li>Ruangan</li>
       <li>Peralatan</li>
