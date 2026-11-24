@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajukan Peminjaman Ruangan · FIRA</title>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
+      <span>FIRA</span>
+    </a>
+
+    <div>
+      <img src="assets/avatar.png" alt="" width="48" height="48">
+      <p>Iqbal Fahmi</p>
+      <p>NIM 255150200111024</p>
+    </div>
+  </header>
+
+  <main>
+    <h1>Ajukan Peminjaman Ruangan</h1>
+
+    <!-- Formulir -->
+    <form id="form-ajukan" novalidate>
+
+      <fieldset>
+        <legend>Jenis Pengaju</legend>
+        <input type="radio" id="pengaju-individu" name="jenis-pengaju" value="individu">
+        <label for="pengaju-individu">Individu</label>
+        <input type="radio" id="pengaju-lembaga" name="jenis-pengaju" value="lembaga" checked>
+        <label for="pengaju-lembaga">Lembaga</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tentang kegiatan</legend>
+
+        <label for="lembaga">Lembaga <span aria-hidden="true">*</span></label>
+        <select id="lembaga" name="lembaga" required>
+          <option value="">Pilih lembaga</option>
+          <option selected>HMDTIF</option>
+        </select>
+
+        <label for="proker">Program Kerja <span aria-hidden="true">*</span></label>
+        <select id="proker" name="proker" required>
+          <option value="">Pilih program kerja</option>
+          <option selected>Pengembangan Keahlian</option>
+        </select>
+
+        <label for="agenda">Agenda <span aria-hidden="true">*</span></label>
+        <select id="agenda" name="agenda" required>
+          <option value="">Pilih agenda</option>
+          <option selected>Pelatihan HMDTIF</option>
+        </select>
+
+        <label for="keperluan">Keperluan <span aria-hidden="true">*</span></label>
+        <select id="keperluan" name="keperluan" required>
+          <option value="">Pilih keperluan</option>
+          <option selected>Kegiatan</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Kontak &amp; kelengkapan</legend>
+
+        <label for="kontak">Kontak (ID LINE / Nomor HP) <span aria-hidden="true">*</span></label>
+        <input type="text" id="kontak" name="kontak" required autocomplete="tel"
+               placeholder="Masukkan ID LINE atau nomor HP">
+
+        <label for="peserta">Jumlah Peserta</label>
+        <input type="number" id="peserta" name="peserta" min="1" inputmode="numeric" placeholder="30">
+
+        <label for="dokumen">Link Dokumen (Google Drive)</label>
+        <input type="url" id="dokumen" name="dokumen" aria-describedby="bantu-dokumen"
+               placeholder="https://drive.google.com/…">
+        <p id="bantu-dokumen">Berikan akses Editor pada dokumen untuk email UB.</p>
+      </fieldset>
+
+      <p><span aria-hidden="true">*</span> wajib diisi</p>
+
+      <!-- Aksi -->
+      <a href="pinjam.html">Kembali</a>
+      <button type="submit">Ajukan Peminjaman</button>
+    </form>
+  </main>
+
+  <!-- Ringkasan -->
+  <aside aria-labelledby="judul-ringkasan">
+    <h2 id="judul-ringkasan">Ringkasan peminjaman</h2>
+    <dl>
+      <dt>Pengaju</dt>
+      <dd>Iqbal Fahmi · dari akun UB</dd>
+      <dt>Ruangan</dt>
+      <dd>Ruang GKM 4.1 (Kanan)</dd>
+      <dt>Tanggal dan jam</dt>
+      <dd><time datetime="2026-11-11T10:00">11 November 2026 · 10.00–12.00 WIB</time></dd>
+    </dl>
+    <a href="pinjam.html">Ubah ruang &amp; jadwal</a>
+
+    <p>Ajukan minimal H-14 sebelum tanggal peminjaman. Pengajuan di luar jam operasional akan ditolak.</p>
+    <a href="prosedur.html">Lihat semua ketentuan <span aria-hidden="true">→</span></a>
+  </aside>
+
+</body>
+</html>
