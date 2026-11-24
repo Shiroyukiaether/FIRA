@@ -12,11 +12,11 @@ Unduh atau klon repositori, lalu buka `index.html` di browser. Tanpa instalasi, 
 2. **Dashboard** – buka **Lihat Detail**, **Lihat Catatan**, **Tampilkan e-Pass**, atau **Notifikasi**.
 3. **Prosedur** – baca alur, centang checklist dokumen, buka panduan per kategori.
 4. **Pinjam Fasilitas** – pilih tab Ruangan, Peralatan, atau Publikasi.
-   - Ruangan: pilih tanggal bertanda panah → ruang → slot → formulir.
+   - Ruangan: pilih tanggal bertanda panah → ruang → slot → formulir. Jalur **Peminjaman Individu** (Lapangan Basket) ada di dialog pilih ruang.
    - Peralatan: tambah alat, isi jumlah. Jumlah di atas stok dan tanggal kembali sebelum tanggal ambil akan menahan pengajuan.
 5. **Ajukan** – isi formulir, konfirmasi, lalu kirim.
 
-SSO dan pengajuan berjalan sebagai simulasi di browser. Data kembali ke kondisi awal ketika halaman dimuat ulang.
+SSO dan pengajuan berjalan sebagai simulasi di browser. Pengajuan yang dikirim muncul di dashboard selama tab browser masih terbuka (`sessionStorage`), lalu hilang saat tab ditutup.
 
 ## Isi repositori
 

@@ -163,8 +163,9 @@ Urutan: Login → Dashboard → Prosedur → Pinjam Fasilitas → Ajukan.
 - Keyboard: urutan Tab mengikuti urutan visual; dialog memindahkan fokus ke dalam dan Esc mengembalikannya ke tombol pembuka.
 - Responsif: tanpa geser horizontal di 375 / 768 / 1280 px untuk semua layar dan tab.
 
-### Belum dikerjakan
-- Pengajuan terkirim belum muncul di dashboard (tidak ada penyimpanan data).
-- Overlay "Peminjaman Individu" dari Figma.
-- Agenda panel Ruangan hanya punya data 11 November.
-- Pilihan lengkap dropdown (Lembaga, Program Kerja, Agenda, Keperluan, Lokasi, Durasi).
+### Susulan
+- ✅ Pengajuan terkirim tampil di dashboard (`sessionStorage`, hilang saat tab ditutup).
+- ✅ Jalur Peminjaman Individu (Lapangan Basket) sesuai overlay Figma.
+- ✅ Agenda per tanggal 11 / 19 / 25 November (data dari kartu dashboard).
+- ✅ Pilihan Lokasi signage (3), Durasi (1/3/7 hari), Lembaga (14 organisasi dari daftar sekretariat GKM).
+- ⏳ Program Kerja, Agenda, Keperluan masih satu pilihan — datanya tidak ada di desain.

@@ -27,6 +27,16 @@ pasangValidasi(formAjukan, {
 
 document.getElementById("tombol-kirim").addEventListener("click", (event) => {
   kirimDenganLoading(event.currentTarget, () => {
+    const individu = fieldsetLembaga.disabled;
+    const ringkas = (kunci) => document.querySelector(`[data-isi="${kunci}"]`).textContent;
+    simpanPengajuan({
+      judul: individu ? "Peminjaman Individu · Ruangan" : `${document.getElementById("agenda").value} · Ruangan`,
+      info: [
+        ["Ruangan", ringkas("ruang")],
+        ["Tanggal dan jam", ringkas("jadwal")],
+        ["Kontak", document.getElementById("kontak").value],
+      ],
+    });
     document.getElementById("dlg-konfirmasi").close();
     document.getElementById("dlg-terkirim").showModal();
   });

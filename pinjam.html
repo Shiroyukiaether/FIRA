@@ -11,6 +11,7 @@
   <script src="js/dialog.js" defer></script>
   <script src="js/form.js" defer></script>
   <script src="js/tabs.js" defer></script>
+  <script src="js/pengajuan.js" defer></script>
   <script src="js/pinjam.js" defer></script>
 </head>
 <body>
@@ -99,8 +100,8 @@
 
       <section class="card col-6" aria-labelledby="judul-agenda">
         <h3 id="judul-agenda">Agenda Tanggal Terpilih</h3>
-        <p class="hint"><time datetime="2026-11-11">Rabu, 11 November 2026</time> · 2 agenda</p>
-        <ul class="list-plain checklist">
+        <p class="hint" id="agenda-tanggal" aria-live="polite"><time datetime="2026-11-11">Rabu, 11 November 2026</time> · 2 agenda</p>
+        <ul id="agenda-daftar" class="list-plain checklist">
           <li>
             <h4>RAION EXHIBITION</h4>
             <p><time datetime="2026-11-11T08:00">08.00–16.00 WIB</time> · GKM Lt 1 Open Space</p>
@@ -200,15 +201,19 @@
           <label for="lokasi">Lokasi signage</label>
           <select id="lokasi" name="lokasi" required>
             <option selected>Semua signage FILKOM UB</option>
+            <option>Auditorium Algoritma · Gedung G Lt. 2</option>
+            <option>Mini Teater Heuristik · Gedung A Lt. 2</option>
           </select>
 
           <label for="mulai">Mulai tayang</label>
-          <input type="date" id="mulai" name="mulai" min="2026-11-01" max="2027-10-31"
+          <input type="date" id="mulai" name="mulai" min="2026-11-25" max="2026-11-26"
                  value="2026-11-25" required>
 
           <label for="durasi">Durasi tayang</label>
           <select id="durasi" name="durasi" required>
             <option selected>1 hari</option>
+            <option>3 hari</option>
+            <option>7 hari</option>
           </select>
         </fieldset>
 
@@ -320,6 +325,8 @@
         <button type="button" class="btn btn--secondary btn--sm" data-dialog="dlg-slot" data-ruang="Auditorium Algoritma" aria-label="Lihat slot Auditorium Algoritma">Lihat slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
       </li>
     </ul>
+    <p class="hint">Untuk peminjaman pribadi</p>
+    <button type="button" class="btn btn--secondary" data-dialog="dlg-individu">Peminjaman Individu <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
   </dialog>
   <dialog id="dlg-slot" class="dialog" aria-labelledby="dlg-slot-judul">
     <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
@@ -410,6 +417,38 @@
     </ul>
     <p>Pastikan konten sudah sesuai sebelum dikirim.</p>
     <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc-eu6-PfNfXGsUTqfbMP44Bq1j_Z0twZQRPSfmwUkxqDh97g/viewform" target="_blank" rel="noopener noreferrer">Buka Form Publikasi <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg><span class="hint"> (tab baru)</span></a></p>
+  </dialog>
+  <dialog id="dlg-individu" class="dialog" aria-labelledby="dlg-individu-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-individu-judul">Peminjaman Individu</h2>
+    <p>Pilih slot untuk Lapangan Basket. Pengajuan ini tidak memerlukan surat organisasi.</p>
+    <p><strong>Lapangan Basket</strong><br><span class="hint">17 November 2026 · contoh slot prototipe</span></p>
+    <ul class="list-plain daftar-pilihan">
+      <li>
+        <span><strong>15.00–16.00 WIB</strong><br><span class="hint">Tersedia</span></span>
+        <button type="button" class="btn btn--primary btn--sm" data-dialog="dlg-konfirmasi-individu" data-jam-individu="15.00–16.00 WIB" aria-label="Pilih slot 15.00–16.00 WIB">Pilih slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      </li>
+      <li>
+        <span><strong>16.00–17.00 WIB</strong><br><span class="hint">Tersedia</span></span>
+        <button type="button" class="btn btn--primary btn--sm" data-dialog="dlg-konfirmasi-individu" data-jam-individu="16.00–17.00 WIB" aria-label="Pilih slot 16.00–17.00 WIB">Pilih slot <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      </li>
+    </ul>
+    <p class="hint">Kalau kamu meminjam untuk kegiatan organisasi, gunakan jalur Lembaga.</p>
+    <button type="button" class="btn btn--secondary" data-dialog="dlg-pilih-ruang">Kembali ke jadwal</button>
+  </dialog>
+  <dialog id="dlg-konfirmasi-individu" class="dialog" aria-labelledby="dlg-konfirmasi-individu-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-konfirmasi-individu-judul">Konfirmasi peminjaman</h2>
+    <dl class="ringkasan">
+      <dt>Pengaju</dt><dd>Individu · Iqbal Fahmi</dd>
+      <dt>Ruangan</dt><dd>Lapangan Basket</dd>
+      <dt>Tanggal dan jam</dt><dd id="individu-jadwal">17 November 2026 · 15.00–16.00 WIB</dd>
+    </dl>
+    <p class="hint">Periksa jadwal sebelum mengirim pengajuan.</p>
+    <div class="aksi aksi--kanan">
+      <button type="button" class="btn btn--secondary" data-dialog="dlg-individu">Ubah slot</button>
+      <button type="button" id="tombol-kirim-individu" class="btn btn--primary">Ajukan Peminjaman</button>
+    </div>
   </dialog>
   <dialog id="dlg-terkirim" class="dialog dialog--tengah" aria-labelledby="dlg-terkirim-judul">
     <p class="ikon-besar"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></p>

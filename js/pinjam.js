@@ -34,12 +34,41 @@ function formatTanggal(nilai, bulan = "short") {
 /* ---------- Ruangan: tanggal → ruang → slot → form ---------- */
 const pilihan = { tanggal: "11 November 2026", ruang: "" };
 
+// Agenda per tanggal (dari data desain)
+const AGENDA = {
+  "11 November 2026": { hari: "Rabu", acara: [
+    { nama: "RAION EXHIBITION", jam: "08.00–16.00 WIB", tempat: "GKM Lt 1 Open Space", oleh: "RAION" },
+    { nama: "PEMILWA FILKOM 2026", jam: "08.00–14.00 WIB", tempat: "Junction", oleh: "DPM" },
+  ] },
+  "19 November 2026": { hari: "Kamis", acara: [
+    { nama: "RABIR AF", jam: "17.00–20.00 WIB", tempat: "Ruang GKM 3.1", oleh: "SGE" },
+  ] },
+  "25 November 2026": { hari: "Rabu", acara: [
+    { nama: "Koordinasi Panitia", jam: "10.00–12.00 WIB", tempat: "Ruang GKM 4.1 (Kanan)" },
+  ] },
+};
+
+function tampilkanAgenda(tanggal) {
+  const { hari, acara } = AGENDA[tanggal];
+  $("agenda-tanggal").textContent = `${hari}, ${tanggal} · ${acara.length} agenda`;
+  $("agenda-daftar").replaceChildren(...acara.map((a) => {
+    const li = document.createElement("li");
+    li.innerHTML = "<h4></h4><p></p><p></p>";
+    li.querySelector("h4").textContent = a.nama;
+    li.children[1].textContent = `${a.jam} · ${a.tempat}`;
+    if (a.oleh) li.children[2].textContent = `Penyelenggara: ${a.oleh}`;
+    else li.children[2].remove();
+    return li;
+  }));
+}
+
 document.querySelectorAll(".hari[data-tanggal]").forEach((tombol) => {
   tombol.addEventListener("click", () => {
     document.querySelectorAll(".hari[data-tanggal]").forEach((t) => t.setAttribute("aria-pressed", "false"));
     tombol.setAttribute("aria-pressed", "true");
     pilihan.tanggal = tombol.dataset.tanggal;
     $("slot-tanggal").textContent = pilihan.tanggal;
+    tampilkanAgenda(pilihan.tanggal);
   });
 });
 
@@ -54,6 +83,24 @@ document.querySelectorAll("[data-jam]").forEach((tombol) => {
   tombol.addEventListener("click", () => {
     const query = new URLSearchParams({ ruang: pilihan.ruang, jadwal: `${pilihan.tanggal} · ${tombol.dataset.jam}` });
     location.href = `ajukan-ruangan.html?${query}`;
+  });
+});
+
+/* ---------- Ruangan: jalur Individu ---------- */
+document.querySelectorAll("[data-jam-individu]").forEach((tombol) => {
+  tombol.addEventListener("click", () => {
+    $("individu-jadwal").textContent = `17 November 2026 · ${tombol.dataset.jamIndividu}`;
+  });
+});
+
+$("tombol-kirim-individu").addEventListener("click", (event) => {
+  kirimDenganLoading(event.currentTarget, () => {
+    simpanPengajuan({
+      judul: "Peminjaman Individu · Ruangan",
+      info: [["Ruangan", "Lapangan Basket"], ["Tanggal dan jam", $("individu-jadwal").textContent]],
+    });
+    $("dlg-konfirmasi-individu").close();
+    $("dlg-terkirim").showModal();
   });
 });
 
@@ -171,10 +218,30 @@ pasangValidasi(formPublikasi, {
 });
 
 /* ---------- Kirim (dari dialog tinjau) ---------- */
+const DATA_KIRIM = {
+  "dlg-tinjau-alat": () => ({
+    judul: "Demo Multimedia · Peralatan",
+    info: [
+      ["Peralatan", ringkasAlat().join(", ")],
+      ["Periode", `${formatTanggal(tglAmbil.value)} – ${formatTanggal(tglKembali.value)}`],
+    ],
+  }),
+  "dlg-tinjau-pub": () => ({
+    judul: "RABIR AF · Publikasi",
+    info: [
+      ["Lokasi signage", $("lokasi").value],
+      ["Mulai tayang", formatTanggal($("mulai").value, "long")],
+      ["Durasi tayang", $("durasi").value],
+    ],
+  }),
+};
+
 document.querySelectorAll("[data-kirim]").forEach((tombol) => {
   tombol.addEventListener("click", () => {
+    const dialog = tombol.closest("dialog");
     kirimDenganLoading(tombol, () => {
-      tombol.closest("dialog").close();
+      simpanPengajuan(DATA_KIRIM[dialog.id]());
+      dialog.close();
       $("dlg-terkirim").showModal();
     });
   });

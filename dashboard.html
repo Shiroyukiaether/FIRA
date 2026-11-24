@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
   <script src="js/dialog.js" defer></script>
+  <script src="js/pengajuan.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
 </head>
 <body>
 
@@ -110,6 +112,21 @@
           </article>
         </li>
       </ul>
+
+      <!-- Kartu pengajuan baru (diisi JS) -->
+      <template id="kartu-terkirim">
+        <li>
+          <article class="card card--status">
+            <h3></h3>
+            <p class="meta"></p>
+            <p class="badge badge--warning"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Menunggu verifikasi BEM</p>
+            <p>Tahap 1 dari 3 · Verifikasi BEM</p>
+            <button type="button" class="btn btn--secondary" aria-haspopup="dialog" data-dialog="dlg-detail-baru">
+              Lihat Detail <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </button>
+          </article>
+        </li>
+      </template>
     </section>
   </main>
 
@@ -159,6 +176,19 @@
   </div>
 
   <!-- Dialog -->
+  <dialog id="dlg-detail-baru" class="dialog" aria-labelledby="dlg-detail-baru-judul">
+    <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
+    <h2 id="dlg-detail-baru-judul">Detail pengajuan</h2>
+    <p id="detail-baru-judul"></p>
+    <p class="badge badge--warning"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Menunggu verifikasi BEM</p>
+    <dl id="detail-baru-info" class="ringkasan"></dl>
+    <ol class="tahapan">
+      <li aria-current="step"><strong>Verifikasi BEM</strong><br><span class="hint">BEM sedang memeriksa dokumen dan jadwal.</span></li>
+      <li><strong>Persetujuan Perkap</strong><br><span class="hint">Tahap ini dimulai setelah verifikasi BEM.</span></li>
+      <li><strong>Pemeriksaan teknisi / satpam</strong><br><span class="hint">Pengecekan dilakukan sebelum fasilitas digunakan.</span></li>
+    </ol>
+    <p class="hint">Perubahan status akan muncul di Notifikasi.</p>
+  </dialog>
   <dialog id="dlg-detail-rabir" class="dialog" aria-labelledby="dlg-detail-rabir-judul">
     <form method="dialog" class="dialog__tutup"><button class="btn btn--secondary btn--sm" aria-label="Tutup"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
     <h2 id="dlg-detail-rabir-judul">Detail peminjaman</h2>
