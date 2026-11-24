@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pinjam Fasilitas · FIRA</title>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="dashboard.html" aria-label="FIRA, ke Dashboard">
+      <span>FIRA</span>
+    </a>
+
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="prosedur.html">Prosedur</a></li>
+        <li><a href="pinjam.html" aria-current="page">Pinjam Fasilitas</a></li>
+      </ul>
+    </nav>
+
+    <button type="button">Notifikasi</button>
+
+    <div>
+      <img src="assets/avatar.png" alt="" width="48" height="48">
+      <p>Iqbal Fahmi</p>
+      <p>NIM 255150200111024</p>
+    </div>
+  </header>
+
+  <main>
+    <h1>Pilihan Fasilitas dan Jadwal</h1>
+
+    <!-- Kategori -->
+    <nav aria-label="Kategori fasilitas">
+      <ul>
+        <li><a href="pinjam.html" aria-current="page">Ruangan</a></li>
+        <li><a href="peralatan.html">Peralatan</a></li>
+        <li><a href="publikasi.html">Publikasi</a></li>
+      </ul>
+    </nav>
+
+    <button type="button" aria-haspopup="dialog">Lihat Daftar Ruangan</button>
+
+    <!-- Kalender -->
+    <section aria-labelledby="judul-kalender">
+      <h2 id="judul-kalender">Kalender Kegiatan</h2>
+      <p id="petunjuk-tanggal">Pilih tanggal bertanda panah.</p>
+
+      <table aria-describedby="petunjuk-tanggal">
+        <caption>November 2026</caption>
+        <thead>
+          <tr>
+            <th scope="col"><abbr title="Senin">Sen</abbr></th>
+            <th scope="col"><abbr title="Selasa">Sel</abbr></th>
+            <th scope="col"><abbr title="Rabu">Rab</abbr></th>
+            <th scope="col"><abbr title="Kamis">Kam</abbr></th>
+            <th scope="col"><abbr title="Jumat">Jum</abbr></th>
+            <th scope="col"><abbr title="Sabtu">Sab</abbr></th>
+            <th scope="col"><abbr title="Minggu">Min</abbr></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+          <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+          <tr>
+            <td>9</td><td>10</td>
+            <td><button type="button" aria-label="Pilih 11 November">11 <span aria-hidden="true">→</span></button></td>
+            <td>12</td><td>13</td><td>14</td><td>15</td>
+          </tr>
+          <tr>
+            <td>16</td><td>17</td><td>18</td>
+            <td><button type="button" aria-label="Pilih 19 November">19 <span aria-hidden="true">→</span></button></td>
+            <td>20</td><td>21</td><td>22</td>
+          </tr>
+          <tr>
+            <td>23</td><td>24</td>
+            <td><button type="button" aria-label="Pilih 25 November">25 <span aria-hidden="true">→</span></button></td>
+            <td>26</td><td>27</td><td>28</td><td>29</td>
+          </tr>
+          <tr><td>30</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Agenda tanggal terpilih -->
+    <section aria-labelledby="judul-agenda">
+      <h2 id="judul-agenda">Agenda Tanggal Terpilih</h2>
+      <p><time datetime="2026-11-11">Rabu, 11 November 2026</time> · 2 agenda</p>
+      <ul>
+        <li>
+          <h3>RAION EXHIBITION</h3>
+          <p><time datetime="2026-11-11T08:00">08.00–16.00 WIB</time> · GKM Lt 1 Open Space</p>
+          <p>Penyelenggara: RAION</p>
+        </li>
+        <li>
+          <h3>PEMILWA FILKOM 2026</h3>
+          <p><time datetime="2026-11-11T08:00">08.00–14.00 WIB</time> · Junction</p>
+          <p>Penyelenggara: DPM</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Lanjut -->
+    <section aria-label="Lanjutkan pengajuan">
+      <button type="button" aria-haspopup="dialog" aria-describedby="petunjuk-slot">
+        Pilih Ruang dan Slot <span aria-hidden="true">→</span>
+      </button>
+      <p id="petunjuk-slot">Pilih tanggal bertanda panah untuk melihat ruang dan jadwal.</p>
+    </section>
+  </main>
+
+</body>
+</html>
